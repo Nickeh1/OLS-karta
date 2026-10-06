@@ -1,4 +1,13 @@
-1. Hur mycket ett zoomklick ändrar nivån
+
+
+
+
+
+
+
+
+
+Hur mycket ett zoomklick ändrar nivån
 När kartan skapas, ändra:
 const map=L.map('map').setView([62.2,16.4],5);
 
