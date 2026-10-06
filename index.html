@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OLS-karta – ansvar</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="ols_data.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
+#app{display:flex;height:100vh}
+#sidebar{width:380px;background:#0f172a;color:#e5e7eb;padding:18px 16px;overflow-y:auto;border-right:1px solid #1e293b}
+#sidebar h1{font-size:20px;margin:0 0 4px}
+.subtitle{margin:0 0 14px;color:#94a3b8;font-size:13px;line-height:1.4}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
+.stat{background:#111827;border:1px solid #1f2937;border-radius:10px;padding:12px}
+.value{font-size:28px;font-weight:700;color:#f8fafc;line-height:1}
+.label{font-size:12px;color:#94a3b8;margin-top:6px}
+#search{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;margin:8px 0 10px}
+.actions{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+button{background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px}
+button.secondary{background:#334155}
+.legend-title{font-size:13px;color:#cbd5e1;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.03em}
+.owner-block{border:1px solid transparent;border-radius:8px;margin-bottom:5px;overflow:hidden}
+.owner-block.open{border-color:#334155;background:#111827}
+.owner-head{display:flex;align-items:center;gap:8px;padding:9px 10px;cursor:pointer}
+.owner-head:hover{background:#111827}
+.dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+.owner-name{flex:1;font-size:13px;font-weight:700}
+.owner-count{font-size:12px;color:#94a3b8}
+.chev{font-size:11px;color:#94a3b8;width:14px}
+.owner-actions{display:none;gap:6px;padding:0 8px 8px 24px}
+.owner-block.open .owner-actions{display:flex}
+.owner-actions button{padding:5px 8px;font-size:11px;border-radius:6px}
+.owner-actions .select-all{background:#1d4ed8}
+.owner-actions .clear-owner{background:#334155}
+.ols-list{display:none;padding:0 8px 8px 24px}
+.owner-block.open .ols-list{display:block}
+.ols-item{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:12px;color:#cbd5e1}
+.ols-item:hover{background:#1e293b}
+.ols-item.selected{background:#1d4ed8;color:white}
+.ols-check{width:14px;height:14px;border:1px solid #64748b;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;flex:0 0 14px}
+.ols-item.selected .ols-check{border-color:white}
+.ols-title{flex:1;line-height:1.25}
+.ols-id{color:#94a3b8;font-size:11px}
+.ols-item.selected .ols-id{color:#dbeafe}
+.hint{margin-top:14px;font-size:12px;color:#94a3b8;line-height:1.4}
+#map{flex:1}
+.popup-title{font-size:14px;font-weight:700;margin-bottom:8px;color:#0f172a}
+.popup-row{display:flex;justify-content:space-between;gap:12px;padding:2px 0;font-size:12px}
+.popup-label{color:#475569}
+.popup-value{font-weight:700;text-align:right}
+.leaflet-popup-content{min-width:240px}
+.marker-pin{width:18px;height:18px;border-radius:50%;border:2px solid white;box-shadow:0 1px 6px rgba(0,0,0,.45)}
+.leaflet-control-layers{font-family:Arial,sans-serif}
+@media(max-width:900px){
+  #app{flex-direction:column}
+  #sidebar{width:100%;height:50vh;border-right:none;border-bottom:1px solid #1e293b}
+  #map{height:50vh}
+}
+</style>
+</head>
+<body>
+<div id="app">
+<aside id="sidebar">
+  <h1>OLS-karta</h1>
+  <p class="subtitle">Klicka på en ansvarig för att fälla ut personens OLS. Välj en eller flera OLS – eller markera alla för personen.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="value" id="totalCount"></div><div class="label">OLS totalt</div></div>
+    <div class="stat"><div class="value" id="ownerCount"></div><div class="label">Ansvariga</div></div>
+  </div>
+  <input id="search" type="text" placeholder="Sök OLS-ID, station, ort...">
+  <div class="actions">
+    <button id="showAllBtn">Visa alla</button>
+    <button class="secondary" id="clearSelectionBtn">Rensa OLS-val</button>
+    <button class="secondary" id="fitBtn">Zooma till urval</button>
+  </div>
+  <div class="legend-title">Ansvariga / OLS</div>
+  <div id="legend"></div>
+  <div class="hint">Fäll ut en ansvarig och välj enstaka OLS eller <strong>Markera alla</strong>. Byt mellan karta och satellit via lagerknappen uppe till höger.</div>
+</aside>
+<div id="map"></div>
+</div>
+
+<script>
+const counts={};
+OLS_DATA.forEach(x=>counts[x.ansvar]=(counts[x.ansvar]||0)+1);
+document.getElementById('totalCount').textContent=OLS_DATA.length;
+document.getElementById('ownerCount').textContent=Object.keys(counts).length;
+
+let selectedIds=new Set(), searchTerm='';
+const legend=document.getElementById('legend');
+
+function sortOls(a,b){
+  return String(a.station||'').localeCompare(String(b.station||''),'sv');
+}
+
+Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
+  const block=document.createElement('div');
+  block.className='owner-block';
+  block.dataset.owner=name;
+
+  const head=document.createElement('div');
+  head.className='owner-head';
+  head.innerHTML=`<span class="chev">▶</span>
+    <span class="dot" style="background:${OLS_COLORS[name]||'#334155'}"></span>
+    <span class="owner-name">${name}</span>
+    <span class="owner-count">${count} st</span>`;
+
+  const actions=document.createElement('div');
+  actions.className='owner-actions';
+  actions.innerHTML=`<button class="select-all">Markera alla</button>
+    <button class="clear-owner">Avmarkera alla</button>`;
+
+  const list=document.createElement('div');
+  list.className='ols-list';
+
+  const ownerItems=OLS_DATA.filter(x=>x.ansvar===name).sort(sortOls);
+
+  ownerItems.forEach(x=>{
+    const item=document.createElement('div');
+    item.className='ols-item';
+    item.dataset.id=String(x.ols_id);
+    item.dataset.search=`${x.ols_id} ${x.station} ${x.ort} ${x.kommun} ${x.transportor||''}`.toLowerCase();
+    item.innerHTML=`<span class="ols-check"></span>
+      <span class="ols-title">${x.station||'Namnlös OLS'}<br>
+      <span class="ols-id">OLS ${x.ols_id}${x.ort?' · '+x.ort:''}</span></span>`;
+    item.onclick=(e)=>{
+      e.stopPropagation();
+      const id=String(x.ols_id);
+      selectedIds.has(id)?selectedIds.delete(id):selectedIds.add(id);
+      updateListSelection();
+      redraw();
+    };
+    list.appendChild(item);
+  });
+
+  actions.querySelector('.select-all').onclick=(e)=>{
+    e.stopPropagation();
+    ownerItems.forEach(x=>selectedIds.add(String(x.ols_id)));
+    updateListSelection();
+    redraw();
+  };
+
+  actions.querySelector('.clear-owner').onclick=(e)=>{
+    e.stopPropagation();
+    ownerItems.forEach(x=>selectedIds.delete(String(x.ols_id)));
+    updateListSelection();
+    redraw();
+  };
+
+  head.onclick=()=>{
+    block.classList.toggle('open');
+    head.querySelector('.chev').textContent=block.classList.contains('open')?'▼':'▶';
+  };
+
+  block.appendChild(head);
+  block.appendChild(actions);
+  block.appendChild(list);
+  legend.appendChild(block);
+});
+
+const map=L.map('map',{
+  zoomSnap:0.25,
+  zoomDelta:0.25
+}).setView([62.2,16.4],5);
+
+const standardMap=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,
+  attribution:'&copy; OpenStreetMap contributors'
+});
+
+const satelliteMap=L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom:19, attribution:'Tiles &copy; Esri'}
+);
+
+standardMap.addTo(map);
+L.control.layers(
+  {'Karta':standardMap,'Satellit':satelliteMap},
+  null,
+  {position:'topright',collapsed:false}
+).addTo(map);
+
+const markerLayer=L.layerGroup().addTo(map);
+
+function icon(c){
+  return L.divIcon({
+    className:'',
+    html:`<div class="marker-pin" style="background:${c}"></div>`,
+    iconSize:[18,18],
+    iconAnchor:[9,9],
+    popupAnchor:[0,-8]
+  });
+}
+
+function popup(x){
+  return `<div class="popup-title">OLS ${x.ols_id} – ${x.station}</div>
+    <div class="popup-row"><span class="popup-label">Ansvarig</span><span class="popup-value">${x.ansvar}</span></div>
+    <div class="popup-row"><span class="popup-label">Transportör</span><span class="popup-value">${x.transportor||'–'}</span></div>
+    <div class="popup-row"><span class="popup-label">Län</span><span class="popup-value">${x.lan||'–'}</span></div>
+    <div class="popup-row"><span class="popup-label">Ort</span><span class="popup-value">${x.ort||'–'}</span></div>
+    <div class="popup-row"><span class="popup-label">Kommun</span><span class="popup-value">${x.kommun||'–'}</span></div>
+    <div class="popup-row"><span class="popup-label">Postnummer</span><span class="popup-value">${x.postnummer||'–'}</span></div>
+    <div class="popup-row"><span class="popup-label">Koordinater</span><span class="popup-value">${x.lat.toFixed(6)}, ${x.lon.toFixed(6)}</span></div>`;
+}
+
+function textMatch(x){
+  const q=searchTerm.trim().toLowerCase();
+  if(!q)return true;
+  return `${x.ols_id} ${x.station} ${x.ort} ${x.kommun} ${x.lan} ${x.ansvar} ${x.transportor||''}`.toLowerCase().includes(q);
+}
+
+function visible(x){
+  const selectedOk=selectedIds.size===0 || selectedIds.has(String(x.ols_id));
+  return selectedOk && textMatch(x);
+}
+
+function updateListSelection(){
+  document.querySelectorAll('.ols-item').forEach(el=>{
+    const s=selectedIds.has(el.dataset.id);
+    el.classList.toggle('selected',s);
+    el.querySelector('.ols-check').textContent=s?'✓':'';
+  });
+}
+
+function filterList(){
+  const q=searchTerm.trim().toLowerCase();
+  document.querySelectorAll('.owner-block').forEach(block=>{
+    let visibleCount=0;
+    block.querySelectorAll('.ols-item').forEach(item=>{
+      const ok=!q || item.dataset.search.includes(q) || block.dataset.owner.toLowerCase().includes(q);
+      item.style.display=ok?'flex':'none';
+      if(ok)visibleCount++;
+    });
+    block.style.display=visibleCount?'block':'none';
+    if(q&&visibleCount){
+      block.classList.add('open');
+      block.querySelector('.chev').textContent='▼';
+    }
+  });
+}
+
+function redraw(){
+  markerLayer.clearLayers();
+  const vis=[];
+
+  OLS_DATA.forEach(x=>{
+    if(!visible(x))return;
+
+    L.marker([x.lat,x.lon],{
+      icon:icon(OLS_COLORS[x.ansvar]||'#334155')
+    })
+    .bindPopup(popup(x))
+    .addTo(markerLayer);
+
+    vis.push([x.lat,x.lon]);
+  });
+
+  if(vis.length===1){
+    map.setView(vis[0],12);
+  }
+  else if(vis.length>1){
+    map.fitBounds(vis,{padding:[30,30]});
+  }
+}
+
+document.getElementById('showAllBtn').onclick=()=>{
+  selectedIds.clear();
+  searchTerm='';
+  document.getElementById('search').value='';
+  document.querySelectorAll('.owner-block').forEach(b=>b.style.display='block');
+  document.querySelectorAll('.ols-item').forEach(i=>i.style.display='flex');
+  updateListSelection();
+  redraw();
+};
+
+document.getElementById('clearSelectionBtn').onclick=()=>{
+  selectedIds.clear();
+  updateListSelection();
+  redraw();
+};
+
+document.getElementById('fitBtn').onclick=redraw;
+
+document.getElementById('search').oninput=e=>{
+  searchTerm=e.target.value||'';
+  filterList();
+  redraw();
+};
+
+updateListSelection();
+redraw();
+</script>
+</body>
+</html>
