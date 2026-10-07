@@ -7,11 +7,12 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="ols_data.js"></script>
+<script src="transport_data.js"></script>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
 #app{display:flex;height:100vh}
-#sidebar{width:380px;background:#0f172a;color:#e5e7eb;padding:18px 16px;overflow-y:auto;border-right:1px solid #1e293b}
+#sidebar{width:390px;background:#0f172a;color:#e5e7eb;padding:18px 16px;overflow-y:auto;border-right:1px solid #1e293b}
 #sidebar h1{font-size:20px;margin:0 0 4px}
 .subtitle{margin:0 0 14px;color:#94a3b8;font-size:13px;line-height:1.4}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
@@ -23,6 +24,13 @@ body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
 button{background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px}
 button.secondary{background:#334155}
 .legend-title{font-size:13px;color:#cbd5e1;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.03em}
+.transport-box{background:#111827;border:1px solid #334155;border-radius:10px;padding:10px 11px;margin:12px 0 14px}
+.transport-title{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:8px}
+.month-row{display:flex;gap:8px;flex-wrap:wrap}
+.month-option{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid #334155;border-radius:7px;cursor:pointer;font-size:12px;color:#cbd5e1;user-select:none}
+.month-option:hover{background:#1e293b}
+.month-option input{accent-color:#2563eb}
+.transport-summary{font-size:11px;color:#94a3b8;margin-top:8px;line-height:1.35}
 .owner-block{border:1px solid transparent;border-radius:8px;margin-bottom:5px;overflow:hidden}
 .owner-block.open{border-color:#334155;background:#111827}
 .owner-head{display:flex;align-items:center;gap:8px;padding:9px 10px;cursor:pointer}
@@ -52,13 +60,17 @@ button.secondary{background:#334155}
 .popup-row{display:flex;justify-content:space-between;gap:12px;padding:2px 0;font-size:12px}
 .popup-label{color:#475569}
 .popup-value{font-weight:700;text-align:right}
-.leaflet-popup-content{min-width:240px}
+.popup-sep{height:1px;background:#e2e8f0;margin:7px 0}
+.leaflet-popup-content{min-width:260px}
 .marker-pin{width:18px;height:18px;border-radius:50%;border:2px solid white;box-shadow:0 1px 6px rgba(0,0,0,.45)}
+.marker-pin.zero{opacity:.35}
+.transport-pin{min-width:30px;height:30px;padding:0 6px;border-radius:15px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;box-shadow:0 1px 7px rgba(0,0,0,.5)}
+.transport-combo{min-width:48px;padding:3px 5px;border-radius:7px;border:2px solid #fff;color:#fff;font-size:10px;font-weight:700;line-height:1.2;text-align:center;box-shadow:0 1px 7px rgba(0,0,0,.5);white-space:nowrap}
 .leaflet-control-layers{font-family:Arial,sans-serif}
 @media(max-width:900px){
   #app{flex-direction:column}
-  #sidebar{width:100%;height:50vh;border-right:none;border-bottom:1px solid #1e293b}
-  #map{height:50vh}
+  #sidebar{width:100%;height:52vh;border-right:none;border-bottom:1px solid #1e293b}
+  #map{height:48vh}
 }
 </style>
 </head>
@@ -67,18 +79,32 @@ button.secondary{background:#334155}
 <aside id="sidebar">
   <h1>OLS-karta</h1>
   <p class="subtitle">Klicka på en ansvarig för att fälla ut personens OLS. Välj en eller flera OLS – eller markera alla för personen.</p>
+
   <div class="stat-grid">
     <div class="stat"><div class="value" id="totalCount"></div><div class="label">OLS totalt</div></div>
     <div class="stat"><div class="value" id="ownerCount"></div><div class="label">Ansvariga</div></div>
   </div>
+
+  <div class="transport-box">
+    <div class="transport-title">Glastransporter 2025</div>
+    <div class="month-row">
+      <label class="month-option"><input type="checkbox" id="monthOct"> Oktober</label>
+      <label class="month-option"><input type="checkbox" id="monthNov"> November</label>
+    </div>
+    <div class="transport-summary">Aktivera en månad för att visa antal glastransporter direkt på respektive OLS-markör. Båda kan vara valda samtidigt.</div>
+  </div>
+
   <input id="search" type="text" placeholder="Sök OLS-ID, station, ort...">
+
   <div class="actions">
     <button id="showAllBtn">Visa alla</button>
     <button class="secondary" id="clearSelectionBtn">Rensa OLS-val</button>
     <button class="secondary" id="fitBtn">Zooma till urval</button>
   </div>
+
   <div class="legend-title">Ansvariga / OLS</div>
   <div id="legend"></div>
+
   <div class="hint">Fäll ut en ansvarig och välj enstaka OLS eller <strong>Markera alla</strong>. Byt mellan karta och satellit via lagerknappen uppe till höger.</div>
 </aside>
 <div id="map"></div>
@@ -116,7 +142,6 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
 
   const list=document.createElement('div');
   list.className='ols-list';
-
   const ownerItems=OLS_DATA.filter(x=>x.ansvar===name).sort(sortOls);
 
   ownerItems.forEach(x=>{
@@ -132,7 +157,7 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
       const id=String(x.ols_id);
       selectedIds.has(id)?selectedIds.delete(id):selectedIds.add(id);
       updateListSelection();
-      redraw();
+      redraw(true);
     };
     list.appendChild(item);
   });
@@ -141,14 +166,14 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
     e.stopPropagation();
     ownerItems.forEach(x=>selectedIds.add(String(x.ols_id)));
     updateListSelection();
-    redraw();
+    redraw(true);
   };
 
   actions.querySelector('.clear-owner').onclick=(e)=>{
     e.stopPropagation();
     ownerItems.forEach(x=>selectedIds.delete(String(x.ols_id)));
     updateListSelection();
-    redraw();
+    redraw(true);
   };
 
   head.onclick=()=>{
@@ -186,17 +211,59 @@ L.control.layers(
 
 const markerLayer=L.layerGroup().addTo(map);
 
-function icon(c){
+function monthData(id,key){
+  const m=(GLAS_TRANSPORTER&&GLAS_TRANSPORTER[key])||{};
+  return m[String(id)] || {transporter:0,vikt_ton:0};
+}
+
+function activeMonths(){
+  return {
+    oct:document.getElementById('monthOct').checked,
+    nov:document.getElementById('monthNov').checked
+  };
+}
+
+function iconFor(x){
+  const c=OLS_COLORS[x.ansvar]||'#334155';
+  const m=activeMonths();
+  const oct=monthData(x.ols_id,'oktober_2025').transporter||0;
+  const nov=monthData(x.ols_id,'november_2025').transporter||0;
+
+  if(!m.oct && !m.nov){
+    return L.divIcon({
+      className:'',
+      html:`<div class="marker-pin" style="background:${c}"></div>`,
+      iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-8]
+    });
+  }
+
+  if(m.oct && m.nov){
+    return L.divIcon({
+      className:'',
+      html:`<div class="transport-combo" style="background:${c}">O: ${oct}<br>N: ${nov}</div>`,
+      iconSize:[48,36],iconAnchor:[24,18],popupAnchor:[0,-18]
+    });
+  }
+
+  const n=m.oct?oct:nov;
+  if(n===0){
+    return L.divIcon({
+      className:'',
+      html:`<div class="marker-pin zero" style="background:${c}"></div>`,
+      iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-8]
+    });
+  }
+
   return L.divIcon({
     className:'',
-    html:`<div class="marker-pin" style="background:${c}"></div>`,
-    iconSize:[18,18],
-    iconAnchor:[9,9],
-    popupAnchor:[0,-8]
+    html:`<div class="transport-pin" style="background:${c}">${n}</div>`,
+    iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-15]
   });
 }
 
 function popup(x){
+  const oct=monthData(x.ols_id,'oktober_2025');
+  const nov=monthData(x.ols_id,'november_2025');
   return `<div class="popup-title">OLS ${x.ols_id} – ${x.station}</div>
     <div class="popup-row"><span class="popup-label">Ansvarig</span><span class="popup-value">${x.ansvar}</span></div>
     <div class="popup-row"><span class="popup-label">Transportör</span><span class="popup-value">${x.transportor||'–'}</span></div>
@@ -204,6 +271,10 @@ function popup(x){
     <div class="popup-row"><span class="popup-label">Ort</span><span class="popup-value">${x.ort||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Kommun</span><span class="popup-value">${x.kommun||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Postnummer</span><span class="popup-value">${x.postnummer||'–'}</span></div>
+    <div class="popup-sep"></div>
+    <div class="popup-row"><span class="popup-label">Glas · okt 2025</span><span class="popup-value">${oct.transporter} trp · ${Number(oct.vikt_ton||0).toFixed(2)} ton</span></div>
+    <div class="popup-row"><span class="popup-label">Glas · nov 2025</span><span class="popup-value">${nov.transporter} trp · ${Number(nov.vikt_ton||0).toFixed(2)} ton</span></div>
+    <div class="popup-sep"></div>
     <div class="popup-row"><span class="popup-label">Koordinater</span><span class="popup-value">${x.lat.toFixed(6)}, ${x.lon.toFixed(6)}</span></div>`;
 }
 
@@ -243,26 +314,23 @@ function filterList(){
   });
 }
 
-function redraw(){
+function redraw(autoFit=true){
   markerLayer.clearLayers();
   const vis=[];
 
   OLS_DATA.forEach(x=>{
     if(!visible(x))return;
-
-    L.marker([x.lat,x.lon],{
-      icon:icon(OLS_COLORS[x.ansvar]||'#334155')
-    })
-    .bindPopup(popup(x))
-    .addTo(markerLayer);
-
+    L.marker([x.lat,x.lon],{icon:iconFor(x)})
+      .bindPopup(popup(x))
+      .addTo(markerLayer);
     vis.push([x.lat,x.lon]);
   });
 
+  if(!autoFit)return;
+
   if(vis.length===1){
     map.setView(vis[0],12);
-  }
-  else if(vis.length>1){
+  }else if(vis.length>1){
     map.fitBounds(vis,{padding:[30,30]});
   }
 }
@@ -274,25 +342,28 @@ document.getElementById('showAllBtn').onclick=()=>{
   document.querySelectorAll('.owner-block').forEach(b=>b.style.display='block');
   document.querySelectorAll('.ols-item').forEach(i=>i.style.display='flex');
   updateListSelection();
-  redraw();
+  redraw(true);
 };
 
 document.getElementById('clearSelectionBtn').onclick=()=>{
   selectedIds.clear();
   updateListSelection();
-  redraw();
+  redraw(true);
 };
 
-document.getElementById('fitBtn').onclick=redraw;
+document.getElementById('fitBtn').onclick=()=>redraw(true);
 
 document.getElementById('search').oninput=e=>{
   searchTerm=e.target.value||'';
   filterList();
-  redraw();
+  redraw(true);
 };
 
+document.getElementById('monthOct').onchange=()=>redraw(false);
+document.getElementById('monthNov').onchange=()=>redraw(false);
+
 updateListSelection();
-redraw();
+redraw(true);
 </script>
 </body>
 </html>
