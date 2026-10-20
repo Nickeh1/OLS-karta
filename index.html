@@ -8,6 +8,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="ols_data.js"></script>
 <script src="transport_data.js"></script>
+<script src="moa_data.js"></script>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
@@ -106,6 +107,16 @@ button.secondary{background:#334155}
     <button class="secondary" id="fitBtn">Zooma till urval</button>
   </div>
 
+  <div class="transport-box">
+    <div class="transport-title">Mottagningsanläggningar (MOA)</div>
+    <label class="month-option"><input id="showMoa" type="checkbox" checked> Visa MOA på kartan</label>
+    <label class="month-option"><input id="showRoutes" type="checkbox" checked> Visa sträckor för urval</label>
+    <input id="moaSearch" aria-label="Sök MOA" placeholder="Sök MOA-ID, namn eller ort" style="width:100%;padding:8px;margin:8px 0">
+    <div id="moaList" style="max-height:220px;overflow:auto"></div>
+    <button id="clearMoa" class="secondary">Rensa MOA-val</button>
+    <p id="routeSummary" class="transport-summary" aria-live="polite"></p>
+    <p class="transport-summary">Lila fyrkant = MOA. Sträckor är raka förbindelselinjer, inte vägbeskrivningar. OLS- och MOA-val kombineras som filter. Glasvärden gäller hela OLS, inte en enskild sträcka.</p>
+  </div>
   <div class="legend-title">Ansvariga / OLS</div>
   <div id="legend"></div>
 
@@ -322,28 +333,64 @@ function filterList(){
   });
 }
 
-function redraw(autoFit=true){
-  markerLayer.clearLayers();
-  const vis=[];
-
-  OLS_DATA.forEach(x=>{
-    if(!visible(x))return;
-    L.marker([x.lat,x.lon],{icon:iconFor(x)})
-      .bindPopup(popup(x))
-      .addTo(markerLayer);
-    vis.push([x.lat,x.lon]);
-  });
-
-  if(!autoFit)return;
-
-  if(vis.length===1){
-    map.setView(vis[0],12);
-  }else if(vis.length>1){
-    map.fitBounds(vis,{padding:[30,30]});
-  }
+const selectedMoa=new Set();
+const moaById=new Map(MOA_DATA.map(m=>[m.id,m]));
+const olsById=new Map(OLS_DATA.map(x=>[String(x.ols_id),x]));
+function escapeText(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function routeMatch(r){return (!selectedMoa.size||selectedMoa.has(r.moa_id))&&(!selectedIds.size||selectedIds.has(r.ols_id))&&textMatch(olsById.get(r.ols_id));}
+function renderMoaList(){
+ const list=document.getElementById('moaList'); list.replaceChildren();
+ const q=document.getElementById('moaSearch').value.toLowerCase();
+ MOA_DATA.slice().sort((a,b)=>a.name.localeCompare(b.name,'sv')).forEach(m=>{
+  if(!`${m.id} ${m.name} ${m.ort}`.toLowerCase().includes(q))return;
+  const label=document.createElement('label');label.className='month-option';label.style.marginBottom='5px';
+  const check=document.createElement('input');check.type='checkbox';check.checked=selectedMoa.has(m.id);
+  check.onchange=()=>{check.checked?selectedMoa.add(m.id):selectedMoa.delete(m.id);redraw(true);};
+  label.append(check,document.createTextNode(`${m.name} · ${m.id} (${new Set(OLS_MOA_ROUTES.filter(r=>r.moa_id===m.id).map(r=>r.ols_id)).size} OLS)`));list.append(label);
+ });
 }
+function focusMoa(id){selectedMoa.clear();selectedMoa.add(id);selectedIds.clear();searchTerm='';document.getElementById('search').value='';filterList();updateListSelection();renderMoaList();redraw(true);}
+function focusOls(id){selectedIds.clear();selectedIds.add(id);selectedMoa.clear();searchTerm='';document.getElementById('search').value='';filterList();updateListSelection();renderMoaList();redraw(true);}
+function redraw(autoFit=true){
+ markerLayer.clearLayers();
+ const vis=[];const routes=OLS_MOA_ROUTES.filter(routeMatch);
+ const connected=new Set(routes.map(r=>r.ols_id));
+ const shownOls=OLS_DATA.filter(x=>visible(x)&&(!selectedMoa.size||connected.has(String(x.ols_id))));
+ const shownIds=new Set(shownOls.map(x=>String(x.ols_id)));
+ const active=routes.filter(r=>shownIds.has(r.ols_id));
+ const targetIds=new Set(active.map(r=>r.moa_id));
+ if(document.getElementById('showRoutes').checked&&(selectedIds.size||selectedMoa.size))active.forEach(r=>{
+  const x=olsById.get(r.ols_id),m=moaById.get(r.moa_id);
+  L.polyline([[x.lat,x.lon],[m.lat,m.lon]],{color:'#a78bfa',weight:3,opacity:.8}).bindPopup(`OLS ${escapeText(x.ols_id)} – ${escapeText(x.station)} → MOA ${escapeText(m.id)} – ${escapeText(m.name)}<br>Rak förbindelselinje`).addTo(markerLayer);
+  vis.push([m.lat,m.lon]);
+ });
+ shownOls.forEach(x=>{
+  const links=OLS_MOA_ROUTES.filter(r=>r.ols_id===String(x.ols_id));
+  const content=document.createElement('div');content.innerHTML=popup(x)+'<div class="popup-sep"></div><strong>Mottagningsanläggningar</strong>';
+  if(!links.length)content.append(document.createTextNode(' – Ingen MOA-koppling i underlaget.'));
+  links.forEach(r=>{const m=moaById.get(r.moa_id),b=document.createElement('button');b.textContent=`${m.name} (${m.id})`;b.style.margin='5px';b.onclick=()=>focusMoa(m.id);content.append(b);});
+  L.marker([x.lat,x.lon],{icon:iconFor(x)}).bindPopup(content).on('click',()=>{if(!selectedIds.size&&!selectedMoa.size){focusOls(String(x.ols_id));}}).addTo(markerLayer);
+  vis.push([x.lat,x.lon]);
+ });
+ if(document.getElementById('showMoa').checked)MOA_DATA.forEach(m=>{
+  if((selectedIds.size||selectedMoa.size||searchTerm)&&!targetIds.has(m.id)&&!selectedMoa.has(m.id))return;
+  const content=document.createElement('div');const title=document.createElement('strong');title.textContent=`MOA ${m.id} – ${m.name}`;content.append(title);
+  const p=document.createElement('p');p.textContent=`${m.address}, ${m.ort}`;content.append(p);
+  OLS_MOA_ROUTES.filter(r=>r.moa_id===m.id).forEach(r=>{const x=olsById.get(r.ols_id),b=document.createElement('button');b.textContent=`OLS ${x.ols_id} – ${x.station}`;b.style.margin='4px';b.onclick=()=>focusOls(r.ols_id);content.append(b);});
+  const marker=L.marker([m.lat,m.lon],{icon:L.divIcon({className:'',html:'<div style="width:20px;height:20px;background:#7c3aed;border:3px solid white;box-shadow:0 1px 6px #333"></div>',iconSize:[20,20],iconAnchor:[10,10]})}).bindPopup(content).addTo(markerLayer);
+  marker.on('click',()=>{if(!selectedMoa.has(m.id)){focusMoa(m.id);}});vis.push([m.lat,m.lon]);
+ });
+ document.getElementById('routeSummary').textContent=`${shownOls.length} OLS · ${targetIds.size} kopplade MOA · ${active.length} sträckor i urvalet. `+(!(selectedIds.size||selectedMoa.size)?'Välj OLS eller MOA för att rita sträckor.':'');
+ if(autoFit&&vis.length)map.fitBounds(vis,{padding:[30,30],maxZoom:12});
+}
+document.getElementById('showMoa').onchange=()=>redraw(false);
+document.getElementById('showRoutes').onchange=()=>redraw(false);
+document.getElementById('moaSearch').oninput=renderMoaList;
+document.getElementById('clearMoa').onclick=()=>{selectedMoa.clear();renderMoaList();redraw(true);};
+renderMoaList();
 
 document.getElementById('showAllBtn').onclick=()=>{
+  selectedMoa.clear();renderMoaList();
   selectedIds.clear();
   searchTerm='';
   document.getElementById('search').value='';
@@ -375,3 +422,4 @@ redraw(true);
 </script>
 </body>
 </html>
+
