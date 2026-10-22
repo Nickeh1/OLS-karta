@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="ols_data.js"></script>
-<script src="transport_data.js"></script>
 <script src="moa_data.js"></script>
 <style>
 *{box-sizing:border-box}
@@ -25,13 +24,17 @@ body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
 button{background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px}
 button.secondary{background:#334155}
 .legend-title{font-size:13px;color:#cbd5e1;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.03em}
-.transport-box{background:#111827;border:1px solid #334155;border-radius:10px;padding:10px 11px;margin:12px 0 14px}
-.transport-title{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:8px}
-.month-row{display:flex;gap:8px;flex-wrap:wrap}
-.month-option{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid #334155;border-radius:7px;cursor:pointer;font-size:12px;color:#cbd5e1;user-select:none}
-.month-option:hover{background:#1e293b}
-.month-option input{accent-color:#2563eb}
-.transport-summary{font-size:11px;color:#94a3b8;margin-top:8px;line-height:1.35}
+.moa-section{background:#111827;border:1px solid #334155;border-radius:10px;padding:10px 11px;margin:12px 0 14px}
+.moa-section summary{cursor:pointer;font-size:13px;font-weight:700;padding:4px 0;list-style:none;display:flex;align-items:center;gap:8px}
+.moa-section summary::before{content:'▶';font-size:11px;color:#94a3b8}
+.moa-section[open] summary::before{content:'▼'}
+.moa-section summary::-webkit-details-marker{display:none}
+.moa-section summary:focus-visible{outline:2px solid #93c5fd;outline-offset:4px}
+.moa-content{margin-top:12px}
+.filter-option{display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid #334155;border-radius:7px;cursor:pointer;font-size:12px;color:#cbd5e1;user-select:none}
+.filter-option:hover{background:#1e293b}
+.filter-option input{accent-color:#2563eb}
+.map-summary{font-size:11px;color:#94a3b8;margin-top:8px;line-height:1.35}
 .owner-block{border:1px solid transparent;border-radius:8px;margin-bottom:5px;overflow:hidden}
 .owner-block.open{border-color:#334155;background:#111827}
 .owner-head{display:flex;align-items:center;gap:8px;padding:9px 10px;cursor:pointer}
@@ -64,13 +67,6 @@ button.secondary{background:#334155}
 .popup-sep{height:1px;background:#e2e8f0;margin:7px 0}
 .leaflet-popup-content{min-width:260px}
 .marker-pin{width:18px;height:18px;border-radius:50%;border:2px solid white;box-shadow:0 1px 6px rgba(0,0,0,.45)}
-.marker-pin.zero{opacity:.35}
-.transport-pin{min-width:30px;height:30px;padding:0 6px;border-radius:15px;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#1f2937;font-size:12px;font-weight:700;box-shadow:0 1px 7px rgba(0,0,0,.5)}
-.transport-combo{min-width:52px;padding:4px 6px;border-radius:8px;border:2px solid #fff;color:#1f2937;font-size:10px;font-weight:700;line-height:1.25;text-align:center;box-shadow:0 1px 7px rgba(0,0,0,.5);white-space:nowrap}
-.level-green{background:#bbf7d0}
-.level-orange{background:#fed7aa}
-.level-red{background:#fecaca}
-.level-zero{background:#e5e7eb;color:#6b7280}
 .leaflet-control-layers{font-family:Arial,sans-serif}
 @media(max-width:900px){
   #app{flex-direction:column}
@@ -90,15 +86,6 @@ button.secondary{background:#334155}
     <div class="stat"><div class="value" id="ownerCount"></div><div class="label">Ansvariga</div></div>
   </div>
 
-  <div class="transport-box">
-    <div class="transport-title">Glastransporter 2025</div>
-    <div class="month-row">
-      <label class="month-option"><input type="checkbox" id="monthOct"> Oktober</label>
-      <label class="month-option"><input type="checkbox" id="monthNov"> November</label>
-    </div>
-    <div class="transport-summary">Aktivera en månad för att visa antal glastransporter direkt på respektive OLS-markör. Båda kan vara valda samtidigt.<br><strong>1–2</strong> = ljusgrön · <strong>3–4</strong> = ljusorange · <strong>5+</strong> = ljusröd.</div>
-  </div>
-
   <input id="search" type="text" placeholder="Sök OLS-ID, station, ort...">
 
   <div class="actions">
@@ -107,16 +94,18 @@ button.secondary{background:#334155}
     <button class="secondary" id="fitBtn">Zooma till urval</button>
   </div>
 
-  <div class="transport-box">
-    <div class="transport-title">Mottagningsanläggningar (MOA)</div>
-    <label class="month-option"><input id="showMoa" type="checkbox" checked> Visa MOA på kartan</label>
-    <label class="month-option"><input id="showRoutes" type="checkbox" checked> Visa sträckor för urval</label>
+  <details class="moa-section">
+    <summary><span class="dot" style="background:#7c3aed;border-radius:2px"></span><span>Mottagningsanläggningar (MOA)</span></summary>
+    <div class="moa-content">
+    <label class="filter-option"><input id="showMoa" type="checkbox" checked> Visa MOA på kartan</label>
+    <label class="filter-option"><input id="showRoutes" type="checkbox" checked> Visa sträckor för urval</label>
     <input id="moaSearch" aria-label="Sök MOA" placeholder="Sök MOA-ID, namn eller ort" style="width:100%;padding:8px;margin:8px 0">
     <div id="moaList" style="max-height:220px;overflow:auto"></div>
     <button id="clearMoa" class="secondary">Rensa MOA-val</button>
-    <p id="routeSummary" class="transport-summary" aria-live="polite"></p>
-    <p class="transport-summary">Lila fyrkant = MOA. Sträckor är raka förbindelselinjer, inte vägbeskrivningar. OLS- och MOA-val kombineras som filter. Glasvärden gäller hela OLS, inte en enskild sträcka.</p>
+    <p id="routeSummary" class="map-summary" aria-live="polite"></p>
+    <p class="map-summary">Lila fyrkant = MOA. Sträckor är raka förbindelselinjer, inte vägbeskrivningar. OLS- och MOA-val kombineras som filter.</p>
   </div>
+  </details>
   <div class="legend-title">Ansvariga / OLS</div>
   <div id="legend"></div>
 
@@ -226,63 +215,12 @@ L.control.layers(
 
 const markerLayer=L.layerGroup().addTo(map);
 
-function monthData(id,key){
-  const m=(GLAS_TRANSPORTER&&GLAS_TRANSPORTER[key])||{};
-  return m[String(id)] || {transporter:0,vikt_ton:0};
-}
-
-function activeMonths(){
-  return {
-    oct:document.getElementById('monthOct').checked,
-    nov:document.getElementById('monthNov').checked
-  };
-}
-
-function levelClass(n){
-  if(n>=5)return 'level-red';
-  if(n>=3)return 'level-orange';
-  if(n>=1)return 'level-green';
-  return 'level-zero';
-}
-
 function iconFor(x){
-  const ownerColor=OLS_COLORS[x.ansvar]||'#334155';
-  const m=activeMonths();
-  const oct=monthData(x.ols_id,'oktober_2025').transporter||0;
-  const nov=monthData(x.ols_id,'november_2025').transporter||0;
-
-  // Inga glasfilter aktiva: behåll ordinarie färg efter ansvarig.
-  if(!m.oct && !m.nov){
-    return L.divIcon({
-      className:'',
-      html:`<div class="marker-pin" style="background:${ownerColor}"></div>`,
-      iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-8]
-    });
-  }
-
-  // Båda månader aktiva: varje månadsrad färgkodas separat.
-  if(m.oct && m.nov){
-    return L.divIcon({
-      className:'',
-      html:`<div class="transport-combo">
-        <div class="${levelClass(oct)}" style="padding:2px 4px;border-radius:4px;margin-bottom:2px">O: ${oct}</div>
-        <div class="${levelClass(nov)}" style="padding:2px 4px;border-radius:4px">N: ${nov}</div>
-      </div>`,
-      iconSize:[54,42],iconAnchor:[27,21],popupAnchor:[0,-20]
-    });
-  }
-
-  // En månad aktiv: färgkodning baserad enbart på antal transporter.
-  const n=m.oct?oct:nov;
-  return L.divIcon({
-    className:'',
-    html:`<div class="transport-pin ${levelClass(n)}">${n}</div>`,
-    iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-15]
-  });
+  return L.divIcon({className:'',
+    html:`<div class="marker-pin" style="background:${OLS_COLORS[x.ansvar]||'#334155'}"></div>`,
+    iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-8]});
 }
 function popup(x){
-  const oct=monthData(x.ols_id,'oktober_2025');
-  const nov=monthData(x.ols_id,'november_2025');
   return `<div class="popup-title">OLS ${x.ols_id} – ${x.station}</div>
     <div class="popup-row"><span class="popup-label">Ansvarig</span><span class="popup-value">${x.ansvar}</span></div>
     <div class="popup-row"><span class="popup-label">Transportör</span><span class="popup-value">${x.transportor||'–'}</span></div>
@@ -290,9 +228,6 @@ function popup(x){
     <div class="popup-row"><span class="popup-label">Ort</span><span class="popup-value">${x.ort||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Kommun</span><span class="popup-value">${x.kommun||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Postnummer</span><span class="popup-value">${x.postnummer||'–'}</span></div>
-    <div class="popup-sep"></div>
-    <div class="popup-row"><span class="popup-label">Glas · okt 2025</span><span class="popup-value">${oct.transporter} trp · ${Number(oct.vikt_ton||0).toFixed(2)} ton</span></div>
-    <div class="popup-row"><span class="popup-label">Glas · nov 2025</span><span class="popup-value">${nov.transporter} trp · ${Number(nov.vikt_ton||0).toFixed(2)} ton</span></div>
     <div class="popup-sep"></div>
     <div class="popup-row"><span class="popup-label">Koordinater</span><span class="popup-value">${x.lat.toFixed(6)}, ${x.lon.toFixed(6)}</span></div>`;
 }
@@ -343,7 +278,7 @@ function renderMoaList(){
  const q=document.getElementById('moaSearch').value.toLowerCase();
  MOA_DATA.slice().sort((a,b)=>a.name.localeCompare(b.name,'sv')).forEach(m=>{
   if(!`${m.id} ${m.name} ${m.ort}`.toLowerCase().includes(q))return;
-  const label=document.createElement('label');label.className='month-option';label.style.marginBottom='5px';
+  const label=document.createElement('label');label.className='filter-option';label.style.marginBottom='5px';
   const check=document.createElement('input');check.type='checkbox';check.checked=selectedMoa.has(m.id);
   check.onchange=()=>{check.checked?selectedMoa.add(m.id):selectedMoa.delete(m.id);redraw(true);};
   label.append(check,document.createTextNode(`${m.name} · ${m.id} (${new Set(OLS_MOA_ROUTES.filter(r=>r.moa_id===m.id).map(r=>r.ols_id)).size} OLS)`));list.append(label);
@@ -414,8 +349,6 @@ document.getElementById('search').oninput=e=>{
   redraw(true);
 };
 
-document.getElementById('monthOct').onchange=()=>redraw(false);
-document.getElementById('monthNov').onchange=()=>redraw(false);
 
 updateListSelection();
 redraw(true);
