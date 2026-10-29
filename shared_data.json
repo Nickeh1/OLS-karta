@@ -1,0 +1,3141 @@
+{
+  "format": "ols-moa-shared",
+  "version": 1,
+  "ols": [
+    {
+      "ols_id": "4100",
+      "station": "Trelleborgs omlastning, Sysav",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 55.382455,
+      "lon": 13.106765,
+      "ort": "Trelleborg",
+      "kommun": "Trelleborg",
+      "lan": "Skåne län",
+      "postnummer": "23162"
+    },
+    {
+      "ols_id": "4207",
+      "station": "Hedeskoga recycling",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 55.463383,
+      "lon": 13.784537,
+      "ort": "Ystad",
+      "kommun": "Ystad",
+      "lan": "Skåne län",
+      "postnummer": "271 99"
+    },
+    {
+      "ols_id": "4145",
+      "station": "Stena Recycling AB, Tomelilla",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 55.552712,
+      "lon": 13.949925,
+      "ort": "Tomelilla",
+      "kommun": "Tomelilla",
+      "lan": "Skåne län",
+      "postnummer": "27335"
+    },
+    {
+      "ols_id": "4209",
+      "station": "Carl F",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 55.625633,
+      "lon": 13.025131,
+      "ort": "Malmö",
+      "kommun": "Malmö",
+      "lan": "Skåne län",
+      "postnummer": "211 24"
+    },
+    {
+      "ols_id": "4060",
+      "station": "Stena Recycling AB, Malmö",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 55.62774,
+      "lon": 13.007917,
+      "ort": "Malmö",
+      "kommun": "Malmö",
+      "lan": "Skåne län",
+      "postnummer": "21124"
+    },
+    {
+      "ols_id": "4084",
+      "station": "Sjöbo återvinningscentral, Sysav",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 55.645198,
+      "lon": 13.681473,
+      "ort": "Sjöbo",
+      "kommun": "Sjöbo",
+      "lan": "Skåne län",
+      "postnummer": "27591"
+    },
+    {
+      "ols_id": "4057",
+      "station": "Lund omlastningscentral, Sysav",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 55.720176,
+      "lon": 13.157671,
+      "ort": "Lund",
+      "kommun": "Lund",
+      "lan": "Skåne län",
+      "postnummer": "22660"
+    },
+    {
+      "ols_id": "4048",
+      "station": "LSR Landskrona Svalöv Renhållnings AB",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 55.863864,
+      "lon": 12.850704,
+      "ort": "Landskrona",
+      "kommun": "Landskrona",
+      "lan": "Skåne län",
+      "postnummer": "261 35"
+    },
+    {
+      "ols_id": "4013",
+      "station": "Mellanskånes Renhållnings AB /Rönneholms Avfallsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 55.914442,
+      "lon": 13.405668,
+      "ort": "Stehag",
+      "kommun": "Eslöv",
+      "lan": "Skåne län",
+      "postnummer": "241 74"
+    },
+    {
+      "ols_id": "4043",
+      "station": "Stena Recycling AB, Kristianstad",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 55.993512,
+      "lon": 14.11916,
+      "ort": "Kristianstad",
+      "kommun": "Kristianstad",
+      "lan": "Skåne län",
+      "postnummer": "291 63"
+    },
+    {
+      "ols_id": "4242",
+      "station": "Kristianstads Biogasanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.0452,
+      "lon": 14.0914,
+      "ort": "Färlöv",
+      "kommun": "Kristianstad",
+      "lan": "Skåne län",
+      "postnummer": "291 75"
+    },
+    {
+      "ols_id": "4023",
+      "station": "Omlastningsstation Helsingborg (NSR AB)",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 56.068815,
+      "lon": 12.758181,
+      "ort": "Helsingborg",
+      "kommun": "Helsingborg",
+      "lan": "Skåne län",
+      "postnummer": "254 64"
+    },
+    {
+      "ols_id": "4041",
+      "station": "Hyllstofta Avfallsanläggning",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Ohlssons AB",
+      "note": "",
+      "lat": 56.13576,
+      "lon": 13.259607,
+      "ort": "Klippan",
+      "kommun": "Klippan",
+      "lan": "Skåne län",
+      "postnummer": "264 93"
+    },
+    {
+      "ols_id": "4008",
+      "station": "Åsens avfallsanläggning",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.14606,
+      "lon": 14.508218,
+      "ort": "Näsum",
+      "kommun": "Bromölla",
+      "lan": "Skåne län",
+      "postnummer": "295 94"
+    },
+    {
+      "ols_id": "4078",
+      "station": "Återvinning Angelskog",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.174301,
+      "lon": 15.335756,
+      "ort": "Ronneby",
+      "kommun": "Ronneby",
+      "lan": "Blekinge län",
+      "postnummer": "372 97"
+    },
+    {
+      "ols_id": "4034",
+      "station": "Västblekinge Miljö AB/VMAB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.186267,
+      "lon": 14.721139,
+      "ort": "Mörrum",
+      "kommun": "Karlshamn",
+      "lan": "Blekinge län",
+      "postnummer": "375 91"
+    },
+    {
+      "ols_id": "4029",
+      "station": "Vankiva Återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.196243,
+      "lon": 13.713056,
+      "ort": "Vankiva",
+      "kommun": "Hässleholm",
+      "lan": "Skåne län",
+      "postnummer": "28195"
+    },
+    {
+      "ols_id": "4036",
+      "station": "Affärsverken",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 56.240929,
+      "lon": 15.606875,
+      "ort": "Rödeby",
+      "kommun": "Karlskrona",
+      "lan": "Blekinge län",
+      "postnummer": "373 45"
+    },
+    {
+      "ols_id": "4074",
+      "station": "ÖGRAB",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Norrvidinge Group AB",
+      "note": "",
+      "lat": 56.31692,
+      "lon": 13.99925,
+      "ort": "Broby",
+      "kommun": "Osby",
+      "lan": "Skåne län",
+      "postnummer": "289 92"
+    },
+    {
+      "ols_id": "4047",
+      "station": "Ahla återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Petterssons Miljö AB",
+      "note": "",
+      "lat": 56.518024,
+      "lon": 13.081933,
+      "ort": "Laholm",
+      "kommun": "Laholm",
+      "lan": "Hallands län",
+      "postnummer": "312 93"
+    },
+    {
+      "ols_id": "4130",
+      "station": "Återvinningscentralen Äskya",
+      "ansvar": "Catharina Andersson",
+      "transportor": "GDL Anläggning & Miljö AB",
+      "note": "",
+      "lat": 56.561188,
+      "lon": 14.163839,
+      "ort": "Älmhult",
+      "kommun": "Älmhult",
+      "lan": "Kronobergs län",
+      "postnummer": "34390"
+    },
+    {
+      "ols_id": "4302",
+      "station": "Elia Express AB",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Petterssons Miljö AB",
+      "note": "",
+      "lat": 56.632598,
+      "lon": 12.946114,
+      "ort": "Halmstad",
+      "kommun": "Halmstad",
+      "lan": "Hallands län",
+      "postnummer": "30262"
+    },
+    {
+      "ols_id": "4148",
+      "station": "Petterssons Miljöåkeri",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.641808,
+      "lon": 12.930892,
+      "ort": "Halmstad",
+      "kommun": "Halmstad",
+      "lan": "Hallands län",
+      "postnummer": "302 62"
+    },
+    {
+      "ols_id": "4033",
+      "station": "Stena Recycling AB, Kalmar",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 56.672317,
+      "lon": 16.312208,
+      "ort": "Kalmar",
+      "kommun": "Kalmar",
+      "lan": "Kalmar län",
+      "postnummer": "391 28"
+    },
+    {
+      "ols_id": "4021",
+      "station": "Stena Recycling AB, Halmstad \"(glas)\"",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.683397,
+      "lon": 12.88875,
+      "ort": "Halmstad",
+      "kommun": "Halmstad",
+      "lan": "Hallands län",
+      "postnummer": "302 44"
+    },
+    {
+      "ols_id": "4161",
+      "station": "Avfallsanläggning Moskogen",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.693476,
+      "lon": 16.171355,
+      "ort": "Ljungbyholm",
+      "kommun": "Kalmar",
+      "lan": "Kalmar län",
+      "postnummer": "39591"
+    },
+    {
+      "ols_id": "4249",
+      "station": "OLS Alwex Gottåsa",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Alwex Transport AB",
+      "note": "",
+      "lat": 56.743443,
+      "lon": 14.488782,
+      "ort": "Grimslöv",
+      "kommun": "Alvesta",
+      "lan": "Kronobergs län",
+      "postnummer": "34255"
+    },
+    {
+      "ols_id": "4051",
+      "station": "Häringetorps Återvinningscentral",
+      "ansvar": "Catharina Andersson",
+      "transportor": "GDL Anläggning & Miljö AB",
+      "note": "",
+      "lat": 56.856487,
+      "lon": 14.692725,
+      "ort": "Gemla",
+      "kommun": "Växjö",
+      "lan": "Kronobergs län",
+      "postnummer": "36032"
+    },
+    {
+      "ols_id": "4162",
+      "station": "Bredemad ÅVC",
+      "ansvar": "Catharina Andersson",
+      "transportor": "GDL Anläggning & Miljö AB",
+      "note": "",
+      "lat": 56.8629,
+      "lon": 13.926628,
+      "ort": "Ljungby",
+      "kommun": "Ljungby",
+      "lan": "Kronobergs län",
+      "postnummer": "34134"
+    },
+    {
+      "ols_id": "4004",
+      "station": "Kalleguta Återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Tord Nilssons Åkeri AB",
+      "note": "",
+      "lat": 56.89043,
+      "lon": 16.790026,
+      "ort": "Köpingsvik",
+      "kommun": "Borgholm",
+      "lan": "Kalmar län",
+      "postnummer": "38795"
+    },
+    {
+      "ols_id": "4308",
+      "station": "Norremarks kretsloppspark",
+      "ansvar": "Catharina Andersson",
+      "transportor": "GDL Anläggning & Miljö AB",
+      "note": "",
+      "lat": 56.90248,
+      "lon": 14.838999,
+      "ort": "Växjö",
+      "kommun": "Växjö",
+      "lan": "Kronobergs län",
+      "postnummer": "353 45"
+    },
+    {
+      "ols_id": "4188",
+      "station": "Stena Recycling AB, Växjö",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.908362,
+      "lon": 14.816105,
+      "ort": "Växjö",
+      "kommun": "Växjö",
+      "lan": "Kronobergs län",
+      "postnummer": "352 45"
+    },
+    {
+      "ols_id": "4247",
+      "station": "Sandladans ÅVC (Glas)",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.909301,
+      "lon": 12.465856,
+      "ort": "Falkenberg",
+      "kommun": "Falkenberg",
+      "lan": "Hallands län",
+      "postnummer": "311 91"
+    },
+    {
+      "ols_id": "4324",
+      "station": "Gödastorp omlastningsstation",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 56.910934,
+      "lon": 12.613156,
+      "ort": "Falkenberg",
+      "kommun": "Falkenberg",
+      "lan": "Hallands län",
+      "postnummer": "31197"
+    },
+    {
+      "ols_id": "4319",
+      "station": "WMS Nordic AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 56.9452,
+      "lon": 12.500073,
+      "ort": "Falkenberg",
+      "kommun": "Falkenberg",
+      "lan": "Hallands län",
+      "postnummer": "311 50"
+    },
+    {
+      "ols_id": "4321",
+      "station": "GLAS - LBC Mönsterås ",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 57.02041,
+      "lon": 16.42159,
+      "ort": "Mönsterås",
+      "kommun": "Mönsterås",
+      "lan": "Kalmar län",
+      "postnummer": "38336"
+    },
+    {
+      "ols_id": "4240",
+      "station": "Mantum Entreprenad AB",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.125054,
+      "lon": 12.287629,
+      "ort": "Varberg",
+      "kommun": "Varberg",
+      "lan": "Hallands län",
+      "postnummer": "432 32"
+    },
+    {
+      "ols_id": "4223",
+      "station": "Ragn-Sells Recycling AB, Varberg",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Petterssons Miljö AB",
+      "note": "",
+      "lat": 57.127255,
+      "lon": 12.284659,
+      "ort": "Varberg",
+      "kommun": "Varberg",
+      "lan": "Hallands län",
+      "postnummer": "432 32"
+    },
+    {
+      "ols_id": "4239",
+      "station": "Stena Recycling AB, Varberg",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Petterssons Miljö AB",
+      "note": "",
+      "lat": 57.127428,
+      "lon": 12.291777,
+      "ort": "Varberg",
+      "kommun": "Varberg",
+      "lan": "Hallands län",
+      "postnummer": "432 32"
+    },
+    {
+      "ols_id": "4111",
+      "station": "Stomsjö avfallsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Samverkan Återvinning och Miljö",
+      "note": "",
+      "lat": 57.179871,
+      "lon": 13.977837,
+      "ort": "Värnamo",
+      "kommun": "Värnamo",
+      "lan": "Jönköpings län",
+      "postnummer": "331 91"
+    },
+    {
+      "ols_id": "4131",
+      "station": "Mossarp Återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Samverkan Återvinning och Miljö",
+      "note": "",
+      "lat": 57.286844,
+      "lon": 13.574686,
+      "ort": "Gislaved",
+      "kommun": "Gislaved",
+      "lan": "Jönköpings län",
+      "postnummer": "33236"
+    },
+    {
+      "ols_id": "4229",
+      "station": "Ragn-Sells Recycling AB, Vetlanda",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 57.410037,
+      "lon": 15.001763,
+      "ort": "Vetlanda",
+      "kommun": "Vetlanda",
+      "lan": "Jönköpings län",
+      "postnummer": "574 94"
+    },
+    {
+      "ols_id": "4024",
+      "station": "Kejsarkullens återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.427764,
+      "lon": 15.814133,
+      "ort": "Hultsfred",
+      "kommun": "Hultsfred",
+      "lan": "Kalmar län",
+      "postnummer": "57791"
+    },
+    {
+      "ols_id": "4089",
+      "station": "LBC i Svenljunga Tranemo",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Remondis AB",
+      "note": "",
+      "lat": 57.486736,
+      "lon": 13.113167,
+      "ort": "Svenljunga",
+      "kommun": "Svenljunga",
+      "lan": "Västra Götalands län",
+      "postnummer": "512 50"
+    },
+    {
+      "ols_id": "4222",
+      "station": "Barnamossens Återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.523014,
+      "lon": 12.156325,
+      "ort": "Kungsbacka",
+      "kommun": "Kungsbacka",
+      "lan": "Hallands län",
+      "postnummer": "434 96"
+    },
+    {
+      "ols_id": "4220",
+      "station": "WAC Recycling",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.634397,
+      "lon": 14.689081,
+      "ort": "Nässjö",
+      "kommun": "Nässjö",
+      "lan": "Jönköpings län",
+      "postnummer": "571 41"
+    },
+    {
+      "ols_id": "4017",
+      "station": "Ragn-Sells Recycling AB, Gotland",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 57.63546,
+      "lon": 18.344835,
+      "ort": "Visby",
+      "kommun": "Gotland",
+      "lan": "Gotlands län",
+      "postnummer": "621 41"
+    },
+    {
+      "ols_id": "4316",
+      "station": "Boda Avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.63742,
+      "lon": 14.65735,
+      "ort": "Nässjö",
+      "kommun": "Nässjö",
+      "lan": "Jönköpings län",
+      "postnummer": "57100"
+    },
+    {
+      "ols_id": "4067",
+      "station": "Återbruket Kikås",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 57.648492,
+      "lon": 12.051004,
+      "ort": "Mölndal",
+      "kommun": "Mölndal",
+      "lan": "Västra Götalands län",
+      "postnummer": "431 64"
+    },
+    {
+      "ols_id": "4160",
+      "station": "Remondis AB, Jönköping",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 57.651222,
+      "lon": 14.200559,
+      "ort": "Jönköping",
+      "kommun": "Jönköping",
+      "lan": "Jönköpings län",
+      "postnummer": "555 92"
+    },
+    {
+      "ols_id": "4006",
+      "station": "Borås Energi & Miljö (Sobacken)",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Remondis AB",
+      "note": "",
+      "lat": 57.653289,
+      "lon": 12.912927,
+      "ort": "Rydboholm",
+      "kommun": "Borås",
+      "lan": "Västra Götalands län",
+      "postnummer": "51570"
+    },
+    {
+      "ols_id": "4245",
+      "station": "Stena Recycling Borås \"(glas)\"",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.654058,
+      "lon": 12.914343,
+      "ort": "Rydboholm",
+      "kommun": "Borås",
+      "lan": "Västra Götalands län",
+      "postnummer": "515 70"
+    },
+    {
+      "ols_id": "4306",
+      "station": "Högsbo OLS (Renova)",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 57.65727,
+      "lon": 11.94779,
+      "ort": "Västra-Frölunda",
+      "kommun": "Göteborg",
+      "lan": "Västra Götalands län",
+      "postnummer": "42130"
+    },
+    {
+      "ols_id": "4315",
+      "station": "Eksjö Energi",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.65867,
+      "lon": 14.99765,
+      "ort": "Eksjö",
+      "kommun": "Eksjö",
+      "lan": "Jönköpings län",
+      "postnummer": "57536"
+    },
+    {
+      "ols_id": "4313",
+      "station": "Fläskebo OLS Renova",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 57.686095,
+      "lon": 12.157665,
+      "ort": "Härryda",
+      "kommun": "Härryda",
+      "lan": "Västra Götalands län",
+      "postnummer": "438 91"
+    },
+    {
+      "ols_id": "4031",
+      "station": "Miljöhantering i Jönköping",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.692383,
+      "lon": 14.267507,
+      "ort": "Jönköping",
+      "kommun": "Jönköping",
+      "lan": "Jönköpings län",
+      "postnummer": "555 92"
+    },
+    {
+      "ols_id": "4187",
+      "station": "Remondis AB, Borås",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.695573,
+      "lon": 12.819222,
+      "ort": "Borås",
+      "kommun": "Borås",
+      "lan": "Västra Götalands län",
+      "postnummer": "504 64"
+    },
+    {
+      "ols_id": "4192",
+      "station": "Stena Recycling AB, Ringön",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.720272,
+      "lon": 11.969153,
+      "ort": "Göteborg",
+      "kommun": "Göteborg",
+      "lan": "Västra Götalands län",
+      "postnummer": "417 07"
+    },
+    {
+      "ols_id": "4211",
+      "station": "Stena Recycling AB, Tingstad",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.725681,
+      "lon": 11.986855,
+      "ort": "Hisingsbacka",
+      "kommun": "Göteborg",
+      "lan": "Västra Götalands län",
+      "postnummer": "422 46"
+    },
+    {
+      "ols_id": "4143",
+      "station": "Remondis AB, Göteborg",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.748097,
+      "lon": 11.994037,
+      "ort": "Hisingsbacka",
+      "kommun": "Göteborg",
+      "lan": "Västra Götalands län",
+      "postnummer": "42246"
+    },
+    {
+      "ols_id": "4216",
+      "station": "Remondis Göteborg \"(glas)\"",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.748097,
+      "lon": 11.994037,
+      "ort": "Hisingsbacka",
+      "kommun": "Göteborg",
+      "lan": "Västra Götalands län",
+      "postnummer": "422 46"
+    },
+    {
+      "ols_id": "4168",
+      "station": "Stena Recycling AB, Borås",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 57.751145,
+      "lon": 12.954726,
+      "ort": "Borås",
+      "kommun": "Borås",
+      "lan": "Västra Götalands län",
+      "postnummer": "506 49"
+    },
+    {
+      "ols_id": "4112",
+      "station": "Målserums avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 57.775833,
+      "lon": 16.584167,
+      "ort": "Västervik",
+      "kommun": "Västervik",
+      "lan": "Kalmar län",
+      "postnummer": "539 41"
+    },
+    {
+      "ols_id": "4314",
+      "station": "Övreskogs ÅVC",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 57.806553,
+      "lon": 13.465708,
+      "ort": "Ulricehamn",
+      "kommun": "Ulricehamn",
+      "lan": "Västra Götalands län",
+      "postnummer": "52390"
+    },
+    {
+      "ols_id": "4114",
+      "station": "Ydre Åkeri",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 57.82315,
+      "lon": 15.292467,
+      "ort": "Ydre",
+      "kommun": "Ydre",
+      "lan": "Östergötlands län",
+      "postnummer": "57374"
+    },
+    {
+      "ols_id": "4045",
+      "station": "Munkegärde omlastningsstation, Renova",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 57.886547,
+      "lon": 11.970377,
+      "ort": "Kungälv",
+      "kommun": "Kungälv",
+      "lan": "Västra Götalands län",
+      "postnummer": "44241"
+    },
+    {
+      "ols_id": "4001",
+      "station": "Bälinge avfallsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Remondis AB",
+      "note": "",
+      "lat": 57.948107,
+      "lon": 12.603828,
+      "ort": "Alingsås",
+      "kommun": "Alingsås",
+      "lan": "Västra Götalands län",
+      "postnummer": "441 93"
+    },
+    {
+      "ols_id": "4099",
+      "station": "Tranås Renhållning AB/JRAB",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "JRAB JR-Företagen AB",
+      "note": "",
+      "lat": 58.006733,
+      "lon": 14.94925,
+      "ort": "Tranås",
+      "kommun": "Tranås",
+      "lan": "Jönköpings län",
+      "postnummer": "573 25"
+    },
+    {
+      "ols_id": "4085",
+      "station": "Återvinningscentralen Kläpp, Renova",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 58.09071,
+      "lon": 11.849255,
+      "ort": "Ödsmål",
+      "kommun": "Stenungsund",
+      "lan": "Västra Götalands län",
+      "postnummer": "44495"
+    },
+    {
+      "ols_id": "4323",
+      "station": "OLS Frebyvägen",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 58.1151,
+      "lon": 15.03441,
+      "ort": "Boxholm",
+      "kommun": "Boxholm",
+      "lan": "Östergötlands län",
+      "postnummer": "59572"
+    },
+    {
+      "ols_id": "4072",
+      "station": "Månsemyr Återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Göteborgs Lastbilcentral ek. förening",
+      "note": "",
+      "lat": 58.161897,
+      "lon": 11.499424,
+      "ort": "Ellös",
+      "kommun": "Orust",
+      "lan": "Västra Götalands län",
+      "postnummer": "47493"
+    },
+    {
+      "ols_id": "4095",
+      "station": "Tidaholms kommun återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 58.164822,
+      "lon": 13.965807,
+      "ort": "Tidaholm",
+      "kommun": "Tidaholm",
+      "lan": "Västra Götalands län",
+      "postnummer": "52291"
+    },
+    {
+      "ols_id": "4171",
+      "station": "Åsbodalens avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.19838,
+      "lon": 15.062432,
+      "ort": "Boxholm",
+      "kommun": "Boxholm",
+      "lan": "Östergötlands län",
+      "postnummer": "59572"
+    },
+    {
+      "ols_id": "4322",
+      "station": "Orrnäs Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 58.233138,
+      "lon": 14.624446,
+      "ort": "Ödeshög",
+      "kommun": "Ödeshög",
+      "lan": "Östergötlands län",
+      "postnummer": "59991"
+    },
+    {
+      "ols_id": "4059",
+      "station": "RAMBO AB - Sivik Återvinningsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.293049,
+      "lon": 11.44866,
+      "ort": "Lysekil",
+      "kommun": "Lysekil",
+      "lan": "Västra Götalands län",
+      "postnummer": "453 92"
+    },
+    {
+      "ols_id": "4101",
+      "station": "Remondis AB, Trollhättan",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 58.306246,
+      "lon": 12.328345,
+      "ort": "Trollhättan",
+      "kommun": "Trollhättan",
+      "lan": "Västra Götalands län",
+      "postnummer": "461 38"
+    },
+    {
+      "ols_id": "4170",
+      "station": "Hulje Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.338705,
+      "lon": 15.107411,
+      "ort": "Mjölby",
+      "kommun": "Mjölby",
+      "lan": "Östergötlands län",
+      "postnummer": "59594"
+    },
+    {
+      "ols_id": "4305",
+      "station": "Lillesjö Omlastningshall",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.37412,
+      "lon": 11.983227,
+      "ort": "Uddevalla",
+      "kommun": "Uddevalla",
+      "lan": "Västra Götalands län",
+      "postnummer": "45155"
+    },
+    {
+      "ols_id": "4091",
+      "station": "RAMBO AB - Hogenäs Återvinningsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.379916,
+      "lon": 11.295061,
+      "ort": "Kungshamn",
+      "kommun": "Sotenäs",
+      "lan": "Västra Götalands län",
+      "postnummer": "456 91"
+    },
+    {
+      "ols_id": "4134",
+      "station": "Stena Recycling AB, Skara",
+      "ansvar": "Mattias Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 58.384725,
+      "lon": 13.452814,
+      "ort": "Skara",
+      "kommun": "Skara",
+      "lan": "Västra Götalands län",
+      "postnummer": "53237"
+    },
+    {
+      "ols_id": "4252",
+      "station": "XR Miljöhantering",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 58.386276,
+      "lon": 13.891166,
+      "ort": "Skövde",
+      "kommun": "Skövde",
+      "lan": "Västra Götalands län",
+      "postnummer": "541 36"
+    },
+    {
+      "ols_id": "4193",
+      "station": "Stena Recycling AB, Linköping",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 58.421518,
+      "lon": 15.607833,
+      "ort": "Linköping",
+      "kommun": "Linköping",
+      "lan": "Östergötlands län",
+      "postnummer": "582 77"
+    },
+    {
+      "ols_id": "4244",
+      "station": "OLS Linköping",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 58.43581,
+      "lon": 15.65318,
+      "ort": "Linköping",
+      "kommun": "Linköping",
+      "lan": "Östergötlands län",
+      "postnummer": "582 75"
+    },
+    {
+      "ols_id": "4180",
+      "station": "Hjälmsborgs Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.4732,
+      "lon": 16.33223,
+      "ort": "Söderköping",
+      "kommun": "Söderköping",
+      "lan": "Östergötlands län",
+      "postnummer": "61432"
+    },
+    {
+      "ols_id": "4052",
+      "station": "Kartåsens återvinningscentral",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 58.488762,
+      "lon": 13.216672,
+      "ort": "Lidköping",
+      "kommun": "Lidköping",
+      "lan": "Västra Götalands län",
+      "postnummer": "53170"
+    },
+    {
+      "ols_id": "4064",
+      "station": "Tuddarps Avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "Motala kommun",
+      "note": "",
+      "lat": 58.516604,
+      "lon": 15.044494,
+      "ort": "Motala",
+      "kommun": "Motala",
+      "lan": "Östergötlands län",
+      "postnummer": "59192"
+    },
+    {
+      "ols_id": "4215",
+      "station": "Hästesked Återvinningsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.519512,
+      "lon": 11.68026,
+      "ort": "Munkedal",
+      "kommun": "Munkedal",
+      "lan": "Västra Götalands län",
+      "postnummer": "455 92"
+    },
+    {
+      "ols_id": "4213",
+      "station": "Prezero Recycling AB, Norrköping",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 58.594821,
+      "lon": 16.218722,
+      "ort": "Norrköping",
+      "kommun": "Norrköping",
+      "lan": "Östergötlands län",
+      "postnummer": "602 28"
+    },
+    {
+      "ols_id": "4014",
+      "station": "Sjömansängs Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.6981,
+      "lon": 15.800807,
+      "ort": "Finspång",
+      "kommun": "Finspång",
+      "lan": "Östergötlands län",
+      "postnummer": "61244"
+    },
+    {
+      "ols_id": "4248",
+      "station": "Bångahagen ÅVC",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Stena Recycling AB",
+      "note": "",
+      "lat": 58.705326,
+      "lon": 13.861502,
+      "ort": "Mariestad",
+      "kommun": "Mariestad",
+      "lan": "Västra Götalands län",
+      "postnummer": "542 92"
+    },
+    {
+      "ols_id": "4070",
+      "station": "Björshults avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.724079,
+      "lon": 16.983315,
+      "ort": "Nyköping",
+      "kommun": "Nyköping",
+      "lan": "Södermanlands län",
+      "postnummer": "61192"
+    },
+    {
+      "ols_id": "4093",
+      "station": "RAMBO AB - Tyft Återvinningsanläggning",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.741711,
+      "lon": 11.443119,
+      "ort": "Tanumshede",
+      "kommun": "Tanum",
+      "lan": "Västra Götalands län",
+      "postnummer": "457 91"
+    },
+    {
+      "ols_id": "4191",
+      "station": "Österröd ÅVC",
+      "ansvar": "Mattias Andersson",
+      "transportor": "Krickos Transporttjänster AB",
+      "note": "",
+      "lat": 58.932018,
+      "lon": 11.190242,
+      "ort": "Strömstad",
+      "kommun": "Strömstad",
+      "lan": "Västra Götalands län",
+      "postnummer": "452 97"
+    },
+    {
+      "ols_id": "4219",
+      "station": "Coneco Miljö",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 58.99515,
+      "lon": 16.25109,
+      "ort": "Katrineholm",
+      "kommun": "Katrineholm",
+      "lan": "Södermanlands län",
+      "postnummer": "641 49"
+    },
+    {
+      "ols_id": "4317",
+      "station": "Vika Avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.013295,
+      "lon": 16.215536,
+      "ort": "Katrineholm",
+      "kommun": "Katrineholm",
+      "lan": "Södermanlands län",
+      "postnummer": "64196"
+    },
+    {
+      "ols_id": "4092",
+      "station": "Tveta Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 59.13545,
+      "lon": 17.571238,
+      "ort": "Södertälje",
+      "kommun": "Södertälje",
+      "lan": "Stockholms län",
+      "postnummer": "15166"
+    },
+    {
+      "ols_id": "4025",
+      "station": "SRV Gladö Återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.173911,
+      "lon": 17.988396,
+      "ort": "Huddinge",
+      "kommun": "Huddinge",
+      "lan": "Stockholms län",
+      "postnummer": "14191"
+    },
+    {
+      "ols_id": "4026",
+      "station": "Remondis Gladö \"Glas\"",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.182338,
+      "lon": 18.003588,
+      "ort": "Huddinge",
+      "kommun": "Huddinge",
+      "lan": "Stockholms län",
+      "postnummer": "141 91"
+    },
+    {
+      "ols_id": "4163",
+      "station": "Stena Recycling AB, Örebro",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.209758,
+      "lon": 15.154086,
+      "ort": "Örebro",
+      "kommun": "Örebro",
+      "lan": "Örebro län",
+      "postnummer": "70118"
+    },
+    {
+      "ols_id": "4164",
+      "station": "PreZero Recycling AB, Örebro \"(glas)\"",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.245262,
+      "lon": 15.118135,
+      "ort": "Örebro",
+      "kommun": "Örebro",
+      "lan": "Örebro län",
+      "postnummer": "70227"
+    },
+    {
+      "ols_id": "4086",
+      "station": "PreZero Recycling AB, Högdalen",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.259419,
+      "lon": 18.058263,
+      "ort": "Bandhagen",
+      "kommun": "Stockholm",
+      "lan": "Stockholms län",
+      "postnummer": "12459"
+    },
+    {
+      "ols_id": "4035",
+      "station": "Mosseruds återvinningsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 59.3247,
+      "lon": 14.4429,
+      "ort": "Karlskoga",
+      "kommun": "Karlskoga",
+      "lan": "Örebro län",
+      "postnummer": "69193"
+    },
+    {
+      "ols_id": "4012",
+      "station": "Lilla Nyby Eskilstuna",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 59.344895,
+      "lon": 16.536754,
+      "ort": "Eskilstuna",
+      "kommun": "Eskilstuna",
+      "lan": "Södermanlands län",
+      "postnummer": "633 49"
+    },
+    {
+      "ols_id": "4044",
+      "station": "Strandmossen",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 59.353852,
+      "lon": 14.103542,
+      "ort": "Kristinehamn",
+      "kommun": "Kristinehamn",
+      "lan": "Värmlands län",
+      "postnummer": "681 94"
+    },
+    {
+      "ols_id": "4135",
+      "station": "Kvitten återvinningscentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "Eskilstuna Strängnäs Energi och Miljö AB",
+      "note": "",
+      "lat": 59.375387,
+      "lon": 16.988597,
+      "ort": "Strängnäs",
+      "kommun": "Strängnäs",
+      "lan": "Södermanlands län",
+      "postnummer": "64542"
+    },
+    {
+      "ols_id": "4225",
+      "station": "Furskogs ÅVC",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 59.384633,
+      "lon": 12.068996,
+      "ort": "Årjäng",
+      "kommun": "Årjäng",
+      "lan": "Värmlands län",
+      "postnummer": "672 94"
+    },
+    {
+      "ols_id": "4087",
+      "station": "Remondis AB, Spånga",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 59.388542,
+      "lon": 17.886552,
+      "ort": "Spånga",
+      "kommun": "Stockholm",
+      "lan": "Stockholms län",
+      "postnummer": "16353"
+    },
+    {
+      "ols_id": "4037",
+      "station": "LBC Frakt Värmland",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 59.407171,
+      "lon": 13.622554,
+      "ort": "Karlstad",
+      "kommun": "Karlstad",
+      "lan": "Värmlands län",
+      "postnummer": "656 39"
+    },
+    {
+      "ols_id": "4147",
+      "station": "Hagby Återvinningscentral \"(glas)\"",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 59.4767,
+      "lon": 18.007133,
+      "ort": "Täby",
+      "kommun": "Täby",
+      "lan": "Stockholms län",
+      "postnummer": "18770"
+    },
+    {
+      "ols_id": "4046",
+      "station": "Vafab Norsa Avfallsstation",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.503341,
+      "lon": 16.029525,
+      "ort": "Köping",
+      "kommun": "Köping",
+      "lan": "Västmanlands län",
+      "postnummer": "731 98"
+    },
+    {
+      "ols_id": "4103",
+      "station": "Ragn-Sells Recycling AB, Högbytorp",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.543155,
+      "lon": 17.62705,
+      "ort": "Bro",
+      "kommun": "Upplands-Bro",
+      "lan": "Stockholms län",
+      "postnummer": "197 93"
+    },
+    {
+      "ols_id": "4107",
+      "station": "Stena Recycling AB, Rosersberg",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 59.562364,
+      "lon": 17.882896,
+      "ort": "Rosersberg",
+      "kommun": "Vallentuna",
+      "lan": "Stockholms län",
+      "postnummer": "19572"
+    },
+    {
+      "ols_id": "4081",
+      "station": "Ragn-Sells Recycling AB, Brista",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.609802,
+      "lon": 17.861881,
+      "ort": "Märsta (Arlanda)",
+      "kommun": "Sigtuna",
+      "lan": "Stockholms län",
+      "postnummer": "195 60"
+    },
+    {
+      "ols_id": "4011",
+      "station": "Vafab Annelunds Avfallstation",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.654106,
+      "lon": 17.142234,
+      "ort": "Enköping",
+      "kommun": "Enköping",
+      "lan": "Uppsala län",
+      "postnummer": "794 47"
+    },
+    {
+      "ols_id": "4113",
+      "station": "VafabMiljö, Gryta avfallsanläggning",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 59.662038,
+      "lon": 16.551624,
+      "ort": "Västerås",
+      "kommun": "Västerås",
+      "lan": "Västmanlands län",
+      "postnummer": "721 37"
+    },
+    {
+      "ols_id": "4146",
+      "station": "Avfallsanläggning Mosseberg",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 59.675926,
+      "lon": 12.586137,
+      "ort": "Arvika",
+      "kommun": "Arvika",
+      "lan": "Värmlands län",
+      "postnummer": "671 41"
+    },
+    {
+      "ols_id": "4136",
+      "station": "Salmunge återvinningscentral",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.741718,
+      "lon": 18.451162,
+      "ort": "Rimbo",
+      "kommun": "Norrtälje",
+      "lan": "Stockholms län",
+      "postnummer": "76292"
+    },
+    {
+      "ols_id": "4228",
+      "station": "Långskogens ÅVC",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 59.786275,
+      "lon": 14.267034,
+      "ort": "Filipstad",
+      "kommun": "Filipstad",
+      "lan": "Värmlands län",
+      "postnummer": "682 97"
+    },
+    {
+      "ols_id": "4104",
+      "station": "RPC",
+      "ansvar": "Catharina Andersson",
+      "transportor": "",
+      "note": "",
+      "lat": 59.855084,
+      "lon": 17.725645,
+      "ort": "Uppsala",
+      "kommun": "Uppsala",
+      "lan": "Uppsala län",
+      "postnummer": "75454"
+    },
+    {
+      "ols_id": "4080",
+      "station": "Vafab Isätra Avfallstation",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.91907,
+      "lon": 16.694423,
+      "ort": "Sala",
+      "kommun": "Sala",
+      "lan": "Västmanlands län",
+      "postnummer": "733 92"
+    },
+    {
+      "ols_id": "4128",
+      "station": "Hovgården avfallsanläggning",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 59.927861,
+      "lon": 17.775192,
+      "ort": "Uppsala",
+      "kommun": "Uppsala",
+      "lan": "Uppsala län",
+      "postnummer": "755 96"
+    },
+    {
+      "ols_id": "4015",
+      "station": "Vafab Sänkmossens Avfallstation",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 60.098403,
+      "lon": 15.696716,
+      "ort": "Fagersta",
+      "kommun": "Fagersta",
+      "lan": "Västmanlands län",
+      "postnummer": "73792"
+    },
+    {
+      "ols_id": "4098",
+      "station": "LBC Wetab Wermlands Transport AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "LBC Frakt i Värmland AB",
+      "note": "",
+      "lat": 60.133205,
+      "lon": 12.987959,
+      "ort": "Torsby",
+      "kommun": "Torsby",
+      "lan": "Värmlands län",
+      "postnummer": "685 33"
+    },
+    {
+      "ols_id": "4055",
+      "station": "Björnhyttans Avfallsanläggning",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.135714,
+      "lon": 15.02655,
+      "ort": "Ludvika",
+      "kommun": "Ludvika",
+      "lan": "Dalarnas län",
+      "postnummer": "77194"
+    },
+    {
+      "ols_id": "4137",
+      "station": "Väddika Avfallsanläggning",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 60.199417,
+      "lon": 18.2355,
+      "ort": "Gimo",
+      "kommun": "Östhammar",
+      "lan": "Uppsala län",
+      "postnummer": "747 95"
+    },
+    {
+      "ols_id": "4094",
+      "station": "Gatmot ÅVC",
+      "ansvar": "Catharina Andersson",
+      "transportor": "Mellansvenska Logistiktransporter AB",
+      "note": "",
+      "lat": 60.29071,
+      "lon": 17.576534,
+      "ort": "Tierp",
+      "kommun": "Tierp",
+      "lan": "Uppsala län",
+      "postnummer": "81592"
+    },
+    {
+      "ols_id": "4183",
+      "station": "Stena Recycling AB, Borlänge",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "",
+      "note": "",
+      "lat": 60.47484,
+      "lon": 15.423946,
+      "ort": "Borlänge",
+      "kommun": "Borlänge",
+      "lan": "Dalarnas län",
+      "postnummer": "781 71"
+    },
+    {
+      "ols_id": "4251",
+      "station": "Bäckdalen",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.495204,
+      "lon": 14.166317,
+      "ort": "Vansbro",
+      "kommun": "Vansbro",
+      "lan": "Dalarnas län",
+      "postnummer": "780 50"
+    },
+    {
+      "ols_id": "4016",
+      "station": "Falu Återvinningcentral",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.613256,
+      "lon": 15.576507,
+      "ort": "Falun",
+      "kommun": "Falun",
+      "lan": "Dalarnas län",
+      "postnummer": "79177"
+    },
+    {
+      "ols_id": "4019",
+      "station": "PreZero Recycling AB, Forsbacka",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 60.639814,
+      "lon": 16.879448,
+      "ort": "Gävle",
+      "kommun": "Gävle",
+      "lan": "Gävleborgs län",
+      "postnummer": "81841"
+    },
+    {
+      "ols_id": "4062",
+      "station": "Återvinningscentral Vamas",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.691691,
+      "lon": 13.74231,
+      "ort": "Malung",
+      "kommun": "Malung-Sälen",
+      "lan": "Dalarnas län",
+      "postnummer": "78234"
+    },
+    {
+      "ols_id": "4231",
+      "station": "Prezero Recycling AB, Rättvik",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.89733,
+      "lon": 15.158749,
+      "ort": "Rättvik",
+      "kommun": "Rättvik",
+      "lan": "Dalarnas län",
+      "postnummer": "795 32"
+    },
+    {
+      "ols_id": "4190",
+      "station": "Fagerströms i Mora",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.982997,
+      "lon": 14.538689,
+      "ort": "Mora",
+      "kommun": "Mora",
+      "lan": "Dalarnas län",
+      "postnummer": "792 36"
+    },
+    {
+      "ols_id": "4127",
+      "station": "Långtå återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 61.289825,
+      "lon": 17.03863,
+      "ort": "Söderhamn",
+      "kommun": "Söderhamn",
+      "lan": "Gävleborgs län",
+      "postnummer": "82640"
+    },
+    {
+      "ols_id": "4309",
+      "station": "BORAB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 61.342738,
+      "lon": 16.304261,
+      "ort": "Bollnäs",
+      "kommun": "Bollnäs",
+      "lan": "Gävleborgs län",
+      "postnummer": "821 30"
+    },
+    {
+      "ols_id": "4124",
+      "station": "Hali AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 61.35031,
+      "lon": 16.087438,
+      "ort": "Alfta",
+      "kommun": "Bollnäs",
+      "lan": "Gävleborgs län",
+      "postnummer": "82292"
+    },
+    {
+      "ols_id": "4243",
+      "station": "Hali AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 61.378501,
+      "lon": 16.392737,
+      "ort": "Bollnäs",
+      "kommun": "Bollnäs",
+      "lan": "Gävleborgs län",
+      "postnummer": "821 43"
+    },
+    {
+      "ols_id": "4218",
+      "station": "Ulvbergets återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 61.72113,
+      "lon": 17.024982,
+      "ort": "Forsa",
+      "kommun": "Hudiksvall",
+      "lan": "Gävleborgs län",
+      "postnummer": "82465"
+    },
+    {
+      "ols_id": "4054",
+      "station": "Åkerslund Återvinningcentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Ljusdal Renhållning AB",
+      "note": "",
+      "lat": 61.839584,
+      "lon": 16.107134,
+      "ort": "Ljusdal",
+      "kommun": "Ljusdal",
+      "lan": "Gävleborgs län",
+      "postnummer": "82731"
+    },
+    {
+      "ols_id": "4246",
+      "station": "Stena Recycling Timrå (Glas)",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 62.401882,
+      "lon": 17.231356,
+      "ort": "Sundsvall",
+      "kommun": "Sundsvall",
+      "lan": "Västernorrlands län",
+      "postnummer": "853 59"
+    },
+    {
+      "ols_id": "4096",
+      "station": "Stena Recycling AB, Timrå",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 62.503898,
+      "lon": 17.314582,
+      "ort": "Timrå",
+      "kommun": "Timrå",
+      "lan": "Västernorrlands län",
+      "postnummer": "861 36"
+    },
+    {
+      "ols_id": "4311",
+      "station": "Funäsdalen",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Axavia Sverige AB",
+      "note": "",
+      "lat": 62.51924,
+      "lon": 12.59885,
+      "ort": "Funäsdalen",
+      "kommun": "Härjedalen",
+      "lan": "Jämtlands län",
+      "postnummer": "84673"
+    },
+    {
+      "ols_id": "4141",
+      "station": "Härnösands Kretsloppspark (HEMAB)",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 62.630321,
+      "lon": 17.912122,
+      "ort": "Härnösand",
+      "kommun": "Härnösand",
+      "lan": "Västernorrlands län",
+      "postnummer": "871 42"
+    },
+    {
+      "ols_id": "4241",
+      "station": "Älands Återvinningsanläggning",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 62.66827,
+      "lon": 17.791923,
+      "ort": "Älandsbro",
+      "kommun": "Härnösand",
+      "lan": "Västernorrlands län",
+      "postnummer": "87010"
+    },
+    {
+      "ols_id": "4312",
+      "station": "OLS Bräcke",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Axavia Sverige AB",
+      "note": "",
+      "lat": 62.778028,
+      "lon": 15.410931,
+      "ort": "Bräcke",
+      "kommun": "Bräcke",
+      "lan": "Jämtlands län",
+      "postnummer": "84321"
+    },
+    {
+      "ols_id": "4042",
+      "station": "Högbergets avfallsanläggning",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 62.957827,
+      "lon": 17.726268,
+      "ort": "Kramfors",
+      "kommun": "Kramfors",
+      "lan": "Västernorrlands län",
+      "postnummer": "872 91"
+    },
+    {
+      "ols_id": "4320",
+      "station": "Hammarstrand",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Axavia Sverige AB",
+      "note": "",
+      "lat": 63.092422,
+      "lon": 16.371321,
+      "ort": "Hammarstrand",
+      "kommun": "Ragunda",
+      "lan": "Jämtlands län",
+      "postnummer": "844 92"
+    },
+    {
+      "ols_id": "4186",
+      "station": "Rödsta ÅVC",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Sundfrakt AB",
+      "note": "",
+      "lat": 63.150215,
+      "lon": 17.192859,
+      "ort": "Sollefteå",
+      "kommun": "Sollefteå",
+      "lan": "Västernorrlands län",
+      "postnummer": "881 35"
+    },
+    {
+      "ols_id": "4122",
+      "station": "Lundstams",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 63.207185,
+      "lon": 14.639935,
+      "ort": "Östersund",
+      "kommun": "Östersund",
+      "lan": "Jämtlands län",
+      "postnummer": "831 52"
+    },
+    {
+      "ols_id": "4121",
+      "station": "Må Återvinningcentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 63.300811,
+      "lon": 18.769073,
+      "ort": "Örnsköldsvik",
+      "kommun": "Örnsköldsvik",
+      "lan": "Västernorrlands län",
+      "postnummer": "89138"
+    },
+    {
+      "ols_id": "4173",
+      "station": "Stena Recycling AB, Umeå",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 63.846699,
+      "lon": 20.212439,
+      "ort": "Umeå",
+      "kommun": "Umeå",
+      "lan": "Västerbottens län",
+      "postnummer": "901 32"
+    },
+    {
+      "ols_id": "4088",
+      "station": "ÅVC Liden",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Axavia Sverige AB",
+      "note": "",
+      "lat": 63.88919,
+      "lon": 15.662201,
+      "ort": "Strömsund",
+      "kommun": "Strömsund",
+      "lan": "Jämtlands län",
+      "postnummer": "833 95"
+    },
+    {
+      "ols_id": "4058",
+      "station": "Lycksele Avfall och Vatten AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 64.596989,
+      "lon": 18.781879,
+      "ort": "Lycksele",
+      "kommun": "Lycksele",
+      "lan": "Västerbottens län",
+      "postnummer": "921 99"
+    },
+    {
+      "ols_id": "4110",
+      "station": "Vilhelmina Återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 64.615957,
+      "lon": 16.662,
+      "ort": "Vilhelmina",
+      "kommun": "Vilhelmina",
+      "lan": "Västerbottens län",
+      "postnummer": "91232"
+    },
+    {
+      "ols_id": "4082",
+      "station": "Degermyran Återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 64.770792,
+      "lon": 21.032724,
+      "ort": "Skellefteå",
+      "kommun": "Skellefteå",
+      "lan": "Västerbottens län",
+      "postnummer": "93176"
+    },
+    {
+      "ols_id": "4069",
+      "station": "Norsjö omlastningsstation",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 64.894139,
+      "lon": 19.587639,
+      "ort": "Norsjö",
+      "kommun": "Norsjö",
+      "lan": "Västerbottens län",
+      "postnummer": "935 32"
+    },
+    {
+      "ols_id": "4129",
+      "station": "Luspnäsets ÅVC",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 65.090877,
+      "lon": 17.09758,
+      "ort": "Storuman",
+      "kommun": "Storuman",
+      "lan": "Västerbottens län",
+      "postnummer": "92331"
+    },
+    {
+      "ols_id": "4206",
+      "station": "OLS Fabriksgatan",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 65.19462,
+      "lon": 18.72398,
+      "ort": "Malå",
+      "kommun": "Malå",
+      "lan": "Västerbottens län",
+      "postnummer": "930 70"
+    },
+    {
+      "ols_id": "4076",
+      "station": "Stena Recycling AB, Piteå",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 65.335772,
+      "lon": 21.417884,
+      "ort": "Öjebyn",
+      "kommun": "Piteå",
+      "lan": "Norrbottens län",
+      "postnummer": "943 36"
+    },
+    {
+      "ols_id": "4075",
+      "station": "Bredviksbergets Avfallsanläggning \"(glas)\"",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 65.376284,
+      "lon": 21.390649,
+      "ort": "Öjebyn",
+      "kommun": "Piteå",
+      "lan": "Norrbottens län",
+      "postnummer": "943 31"
+    },
+    {
+      "ols_id": "4090",
+      "station": "Svevia krossanläggning, Svartliden, Sorsele",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 65.531861,
+      "lon": 17.615784,
+      "ort": "Sorsele",
+      "kommun": "Sorsele",
+      "lan": "Västerbottens län",
+      "postnummer": "924 31"
+    },
+    {
+      "ols_id": "4056",
+      "station": "Lumire Sunderbyn",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 65.668551,
+      "lon": 21.979639,
+      "ort": "Södra Sunderbyn",
+      "kommun": "Luleå",
+      "lan": "Norrbottens län",
+      "postnummer": "954 42"
+    },
+    {
+      "ols_id": "4226",
+      "station": "Stena Recycling AB, Älvsbyn",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "BDX Företagen AB",
+      "note": "",
+      "lat": 65.681925,
+      "lon": 20.975312,
+      "ort": "Älvsbyn",
+      "kommun": "Älvsbyn",
+      "lan": "Norrbottens län",
+      "postnummer": "942 36"
+    },
+    {
+      "ols_id": "4022",
+      "station": "Haparanda Renhållning AB",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "Enrec AB",
+      "note": "",
+      "lat": 65.828533,
+      "lon": 24.10615,
+      "ort": "Haparanda",
+      "kommun": "Haparanda",
+      "lan": "Norrbottens län",
+      "postnummer": "953 32"
+    },
+    {
+      "ols_id": "4142",
+      "station": "Miljö & Teknik i Kangos",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "",
+      "note": "",
+      "lat": 65.836563,
+      "lon": 21.725607,
+      "ort": "Boden",
+      "kommun": "Boden",
+      "lan": "Norrbottens län",
+      "postnummer": "691 67"
+    },
+    {
+      "ols_id": "4169",
+      "station": "BDX",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "BDX Företagen AB",
+      "note": "",
+      "lat": 65.879906,
+      "lon": 23.159584,
+      "ort": "Kalix",
+      "kommun": "Kalix",
+      "lan": "Norrbottens län",
+      "postnummer": "952 41"
+    },
+    {
+      "ols_id": "4030",
+      "station": "Åvc Jokkmokk",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "BDX Företagen AB",
+      "note": "",
+      "lat": 66.608493,
+      "lon": 19.846609,
+      "ort": "Jokkmokk",
+      "kommun": "Jokkmokk",
+      "lan": "Norrbottens län",
+      "postnummer": "96231"
+    },
+    {
+      "ols_id": "4250",
+      "station": "Hamre ÅVC",
+      "ansvar": "Niklas Gyllenstierna",
+      "transportor": "m4 gruppen AB",
+      "note": "",
+      "lat": 60.285912,
+      "lon": 16.003688,
+      "ort": "Hedemora",
+      "kommun": "Hedemora",
+      "lan": "Dalarnas län",
+      "postnummer": "77690"
+    },
+    {
+      "ols_id": "4018",
+      "station": "Kavahedens Återvinningscentral",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "BDX Företagen AB",
+      "note": "",
+      "lat": 67.153581,
+      "lon": 20.738411,
+      "ort": "Gällivare",
+      "kommun": "Gällivare",
+      "lan": "Norrbottens län",
+      "postnummer": "98235"
+    },
+    {
+      "ols_id": "4040",
+      "station": "Kiruna Avfallsanläggning",
+      "ansvar": "Emelie Sundlin",
+      "transportor": "BDX Företagen AB",
+      "note": "",
+      "lat": 67.863016,
+      "lon": 20.282113,
+      "ort": "Kiruna",
+      "kommun": "Kiruna",
+      "lan": "Norrbottens län",
+      "postnummer": "981 37"
+    },
+    {
+      "ols_id": "4253",
+      "station": "Stenkullen",
+      "ansvar": "Okänd",
+      "transportor": "",
+      "note": "",
+      "lat": 57.79476,
+      "lon": 12.31688,
+      "ort": "Stenkullen",
+      "kommun": "Lerum",
+      "lan": "Västra Götalands län",
+      "postnummer": "443 61"
+    },
+    {
+      "ols_id": "9543",
+      "station": "Övreskogs ÅVC",
+      "ansvar": "Okänd",
+      "transportor": "",
+      "note": "",
+      "lat": 57.806553,
+      "lon": 13.465708,
+      "ort": "Ulrisehamn",
+      "kommun": "Ulricehamn",
+      "lan": "Västra Götalands län",
+      "postnummer": "52390"
+    }
+  ],
+  "moa": [
+    {
+      "id": "6042",
+      "name": "Affärsverken",
+      "address": "Tippvägen 10",
+      "note": "",
+      "lat": 56.240929,
+      "lon": 15.606875,
+      "ort": "Rödeby",
+      "kommun": "Karlskrona"
+    },
+    {
+      "id": "6021",
+      "name": "Stena Recycling AB, Borlänge",
+      "address": "Hejargatan 5, S Industriomr.",
+      "note": "",
+      "lat": 60.47472,
+      "lon": 15.42389,
+      "ort": "Borlänge",
+      "kommun": "Borlänge"
+    },
+    {
+      "id": "6008",
+      "name": "Prezero Recycling AB, Mora",
+      "address": "Vattugatan 3",
+      "note": "",
+      "lat": 60.991011,
+      "lon": 14.536519,
+      "ort": "Mora",
+      "kommun": "Mora"
+    },
+    {
+      "id": "6023",
+      "name": "Stena Recycling AB, Bollnäs",
+      "address": "Tegelbruksvägen 7",
+      "note": "",
+      "lat": 61.37833,
+      "lon": 16.3925,
+      "ort": "Bollnäs",
+      "kommun": "Bollnäs"
+    },
+    {
+      "id": "6026",
+      "name": "Stena Recycling AB, Hudiksvall",
+      "address": "Köpmanbergsvägen 11",
+      "note": "",
+      "lat": 61.72139,
+      "lon": 17.145,
+      "ort": "Hudiksvall",
+      "kommun": "Hudiksvall"
+    },
+    {
+      "id": "6009",
+      "name": "Petterssons Miljöåkeri",
+      "address": "Tömvägen 4",
+      "note": "",
+      "lat": 56.641808,
+      "lon": 12.930892,
+      "ort": "Halmstad",
+      "kommun": "Halmstad"
+    },
+    {
+      "id": "6004",
+      "name": "Lundstams",
+      "address": "Storlienvägen 50",
+      "note": "",
+      "lat": 63.207185,
+      "lon": 14.639935,
+      "ort": "Östersund",
+      "kommun": "Östersund"
+    },
+    {
+      "id": "6017",
+      "name": "Remondis AB, Jönköping",
+      "address": "Lagervägen 3",
+      "note": "",
+      "lat": 57.651231,
+      "lon": 14.200569,
+      "ort": "Jönköping",
+      "kommun": "Jönköping"
+    },
+    {
+      "id": "6014",
+      "name": "Ragn-Sells Recycling AB, Vetlanda",
+      "address": "Hultaby Nyatorp 1",
+      "note": "",
+      "lat": 57.410042,
+      "lon": 15.001767,
+      "ort": "Vetlanda",
+      "kommun": "Vetlanda"
+    },
+    {
+      "id": "6027",
+      "name": "Stena Recycling AB, Kalmar",
+      "address": "Husängsvägen 7",
+      "note": "",
+      "lat": 56.672317,
+      "lon": 16.312208,
+      "ort": "Kalmar",
+      "kommun": "Kalmar"
+    },
+    {
+      "id": "6030",
+      "name": "Stena Recycling AB, Linköping",
+      "address": "Bangårdsgatan 3",
+      "note": "",
+      "lat": 58.421518,
+      "lon": 15.607833,
+      "ort": "Linköping",
+      "kommun": "Linköping"
+    },
+    {
+      "id": "6039",
+      "name": "Stena Recycling AB, Växjö",
+      "address": "Renvägen 11",
+      "note": "",
+      "lat": 56.908362,
+      "lon": 14.816105,
+      "ort": "Växjö",
+      "kommun": "Växjö"
+    },
+    {
+      "id": "6043",
+      "name": "Lumire Sunderbyn",
+      "address": "Gamla Bodenvägen 330",
+      "note": "",
+      "lat": 65.668551,
+      "lon": 21.979639,
+      "ort": "Södra Sunderbyn",
+      "kommun": "Luleå"
+    },
+    {
+      "id": "6032",
+      "name": "Stena Recycling AB, Piteå",
+      "address": "Hammarvägen 33",
+      "note": "",
+      "lat": 65.335772,
+      "lon": 21.417884,
+      "ort": "Öjebyn",
+      "kommun": "Piteå"
+    },
+    {
+      "id": "6029",
+      "name": "Stena Recycling AB, Kristianstad",
+      "address": "Annedalsvägen 20",
+      "note": "",
+      "lat": 55.993512,
+      "lon": 14.11916,
+      "ort": "Kristianstad",
+      "kommun": "Kristianstad"
+    },
+    {
+      "id": "6031",
+      "name": "Stena Recycling AB, Malmö",
+      "address": "Hemsögatan 2",
+      "note": "",
+      "lat": 55.62774,
+      "lon": 13.007917,
+      "ort": "Malmö",
+      "kommun": "Malmö"
+    },
+    {
+      "id": "6010",
+      "name": "Prezero Recyling AB, Åstorp",
+      "address": "Ji-Te Gatan 17",
+      "note": "",
+      "lat": 56.12278,
+      "lon": 12.92722,
+      "ort": "Åstorp",
+      "kommun": "Åstorp"
+    },
+    {
+      "id": "6034",
+      "name": "Stena Recycling AB, Rosersberg",
+      "address": "Metallvägen 60",
+      "note": "",
+      "lat": 59.562364,
+      "lon": 17.882896,
+      "ort": "Rosersberg",
+      "kommun": "Sigtuna"
+    },
+    {
+      "id": "6006",
+      "name": "PreZero Recycling AB, Högdalen",
+      "address": "Kvicksundsvägen 14-16",
+      "note": "",
+      "lat": 59.259419,
+      "lon": 18.058263,
+      "ort": "Bandhagen",
+      "kommun": "Stockholm"
+    },
+    {
+      "id": "6018",
+      "name": "Remondis AB, Spånga",
+      "address": "Finspångsgatan 36",
+      "note": "",
+      "lat": 59.38778,
+      "lon": 17.88722,
+      "ort": "Spånga",
+      "kommun": "Stockholm"
+    },
+    {
+      "id": "6020",
+      "name": "RPC",
+      "address": "Grafikgatan 2-6",
+      "note": "",
+      "lat": 59.855084,
+      "lon": 17.725645,
+      "ort": "Uppsala",
+      "kommun": "Uppsala"
+    },
+    {
+      "id": "6011",
+      "name": "PreZero Recyling AB, Norrköping",
+      "address": "Röda Stugans Gata 9",
+      "note": "",
+      "lat": 58.594821,
+      "lon": 16.218722,
+      "ort": "Norrköping",
+      "kommun": "Norrköping"
+    },
+    {
+      "id": "6001",
+      "name": "ESEM",
+      "address": "Återvinningsgatan 2",
+      "note": "",
+      "lat": 59.344895,
+      "lon": 16.536754,
+      "ort": "Eskilstuna",
+      "kommun": "Eskilstuna"
+    },
+    {
+      "id": "6041",
+      "name": "VafabMiljö",
+      "address": "Returvägen 20",
+      "note": "",
+      "lat": 59.662038,
+      "lon": 16.551624,
+      "ort": "Västerås",
+      "kommun": "Västerås"
+    },
+    {
+      "id": "6028",
+      "name": "Stena Recycling AB, Karlstad",
+      "address": "Östanvindsgatan 24",
+      "note": "",
+      "lat": 59.38583,
+      "lon": 13.55667,
+      "ort": "Karlstad",
+      "kommun": "Karlstad"
+    },
+    {
+      "id": "6038",
+      "name": "Stena Recycling AB, Umeå",
+      "address": "Kontaktvägen 16",
+      "note": "",
+      "lat": 63.846985,
+      "lon": 20.212357,
+      "ort": "Umeå",
+      "kommun": "Umeå"
+    },
+    {
+      "id": "6016",
+      "name": "Remondis AB, Husum",
+      "address": "Dombäck 239",
+      "note": "",
+      "lat": 63.3515,
+      "lon": 19.11317,
+      "ort": "Husum",
+      "kommun": "Örnsköldsvik"
+    },
+    {
+      "id": "6002",
+      "name": "HEMAB",
+      "address": "Jaktstigen 1",
+      "note": "",
+      "lat": 62.630321,
+      "lon": 17.912122,
+      "ort": "Härnösand",
+      "kommun": "Härnösand"
+    },
+    {
+      "id": "6007",
+      "name": "Remondis AB, Borås",
+      "address": "Ödegärdsgatan 14",
+      "note": "",
+      "lat": 57.69194,
+      "lon": 12.82028,
+      "ort": "Borås",
+      "kommun": "Borås"
+    },
+    {
+      "id": "6015",
+      "name": "Remondis AB, Göteborg",
+      "address": "Importgatan 47",
+      "note": "",
+      "lat": 57.75778,
+      "lon": 11.99556,
+      "ort": "Hisings Backa",
+      "kommun": "Göteborg"
+    },
+    {
+      "id": "6035",
+      "name": "Stena Recycling AB, Skara",
+      "address": "Axvallagatan 6",
+      "note": "",
+      "lat": 58.38472,
+      "lon": 13.45278,
+      "ort": "Skara",
+      "kommun": "Skara"
+    },
+    {
+      "id": "6019",
+      "name": "Remondis AB, Trollhättan",
+      "address": "Flygfältsvägen 19",
+      "note": "",
+      "lat": 58.306246,
+      "lon": 12.328345,
+      "ort": "Trollhättan",
+      "kommun": "Trollhättan"
+    },
+    {
+      "id": "6040",
+      "name": "Stena Recycling AB, Örebro",
+      "address": "Returgatan 3",
+      "note": "",
+      "lat": 59.209758,
+      "lon": 15.154086,
+      "ort": "Örebro",
+      "kommun": "Örebro"
+    }
+  ],
+  "routes": [
+    {
+      "ols_id": "4034",
+      "moa_id": "6042",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4078",
+      "moa_id": "6042",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4016",
+      "moa_id": "6021",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4055",
+      "moa_id": "6021",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4062",
+      "moa_id": "6008",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4190",
+      "moa_id": "6008",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4231",
+      "moa_id": "6008",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4250",
+      "moa_id": "6021",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4251",
+      "moa_id": "6008",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4054",
+      "moa_id": "6023",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4054",
+      "moa_id": "6026",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4124",
+      "moa_id": "6023",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4124",
+      "moa_id": "6026",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4127",
+      "moa_id": "6026",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4218",
+      "moa_id": "6023",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4218",
+      "moa_id": "6026",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4309",
+      "moa_id": "6026",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4047",
+      "moa_id": "6009",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4223",
+      "moa_id": "6009",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4239",
+      "moa_id": "6009",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4302",
+      "moa_id": "6009",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4088",
+      "moa_id": "6004",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4311",
+      "moa_id": "6004",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4312",
+      "moa_id": "6004",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4320",
+      "moa_id": "6004",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4031",
+      "moa_id": "6017",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4099",
+      "moa_id": "6014",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4111",
+      "moa_id": "6017",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4131",
+      "moa_id": "6017",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4220",
+      "moa_id": "6014",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4004",
+      "moa_id": "6027",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4024",
+      "moa_id": "6014",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4112",
+      "moa_id": "6030",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4161",
+      "moa_id": "6027",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4051",
+      "moa_id": "6039",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4130",
+      "moa_id": "6039",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4162",
+      "moa_id": "6039",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4249",
+      "moa_id": "6039",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4308",
+      "moa_id": "6039",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4018",
+      "moa_id": "6043",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4022",
+      "moa_id": "6043",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4030",
+      "moa_id": "6043",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4040",
+      "moa_id": "6043",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4169",
+      "moa_id": "6043",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4226",
+      "moa_id": "6032",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4008",
+      "moa_id": "6029",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4013",
+      "moa_id": "6031",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4023",
+      "moa_id": "6010",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4029",
+      "moa_id": "6029",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4041",
+      "moa_id": "6010",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4048",
+      "moa_id": "6010",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4057",
+      "moa_id": "6031",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4074",
+      "moa_id": "6029",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4084",
+      "moa_id": "6031",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4100",
+      "moa_id": "6031",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4081",
+      "moa_id": "6034",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4092",
+      "moa_id": "6006",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4103",
+      "moa_id": "6018",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4136",
+      "moa_id": "6020",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4070",
+      "moa_id": "6011",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4135",
+      "moa_id": "6001",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4219",
+      "moa_id": "6001",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4011",
+      "moa_id": "6041",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4094",
+      "moa_id": "6020",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4128",
+      "moa_id": "6020",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4137",
+      "moa_id": "6020",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4037",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4044",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4098",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4146",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4225",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4228",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4058",
+      "moa_id": "6038",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4082",
+      "moa_id": "6032",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4090",
+      "moa_id": "6032",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4110",
+      "moa_id": "6016",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4129",
+      "moa_id": "6038",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4206",
+      "moa_id": "6032",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4042",
+      "moa_id": "6002",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4121",
+      "moa_id": "6016",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4186",
+      "moa_id": "6002",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4015",
+      "moa_id": "6041",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4046",
+      "moa_id": "6041",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4080",
+      "moa_id": "6041",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4001",
+      "moa_id": "6007",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4006",
+      "moa_id": "6007",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4045",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4052",
+      "moa_id": "6035",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4059",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4067",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4072",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4085",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4089",
+      "moa_id": "6007",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4091",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4093",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4095",
+      "moa_id": "6035",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4191",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4215",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4248",
+      "moa_id": "6028",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4252",
+      "moa_id": "6035",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4253",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4305",
+      "moa_id": "6019",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4306",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4313",
+      "moa_id": "6015",
+      "carrier": ""
+    },
+    {
+      "ols_id": "9543",
+      "moa_id": "6007",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4035",
+      "moa_id": "6040",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4014",
+      "moa_id": "6011",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4064",
+      "moa_id": "6030",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4114",
+      "moa_id": "6014",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4170",
+      "moa_id": "6030",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4171",
+      "moa_id": "6030",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4180",
+      "moa_id": "6011",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4244",
+      "moa_id": "6030",
+      "carrier": ""
+    }
+  ]
+}
