@@ -1606,7 +1606,7 @@
       "station": "Björnhyttans Avfallsanläggning",
       "ansvar": "Niklas Gyllenstierna",
       "transportor": "m4 gruppen AB",
-      "note": "test github",
+      "note": "",
       "lat": 60.135714,
       "lon": 15.02655,
       "ort": "Ludvika",
@@ -2224,19 +2224,6 @@
       "kommun": "Lerum",
       "lan": "Västra Götalands län",
       "postnummer": "443 61"
-    },
-    {
-      "ols_id": "9543",
-      "station": "Övreskogs ÅVC",
-      "ansvar": "Okänd",
-      "transportor": "",
-      "note": "",
-      "lat": 57.806553,
-      "lon": 13.465708,
-      "ort": "Ulrisehamn",
-      "kommun": "Ulricehamn",
-      "lan": "Västra Götalands län",
-      "postnummer": "52390"
     }
   ],
   "moa": [
@@ -3085,11 +3072,6 @@
     {
       "ols_id": "4313",
       "moa_id": "6015",
-      "carrier": ""
-    },
-    {
-      "ols_id": "9543",
-      "moa_id": "6007",
       "carrier": ""
     },
     {
