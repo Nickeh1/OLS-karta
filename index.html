@@ -73,6 +73,7 @@ button.secondary{background:#334155}
   #sidebar{width:100%;height:52vh;border-right:none;border-bottom:1px solid #1e293b}
   #map{height:48vh}
 }
+dialog{background:#111827;color:#e5e7eb;border:1px solid #475569;border-radius:12px;width:min(440px,92vw);padding:24px}dialog::backdrop{background:#0009}dialog h2{font-size:18px;margin-top:0}dialog label{display:block;margin:14px 0 6px}#ownerInput{width:100%;padding:10px;border:1px solid #64748b;border-radius:6px}#colorInput{width:80px;height:40px}input[type=file]{max-width:100%;font-size:11px}.filter-option:has(input[type=file]){display:block}button:focus-visible{outline:2px solid #93c5fd;outline-offset:2px}
 </style>
 </head>
 <body>
@@ -86,7 +87,7 @@ button.secondary{background:#334155}
     <div class="stat"><div class="value" id="ownerCount"></div><div class="label">Ansvariga</div></div>
   </div>
 
-  <input id="search" type="text" placeholder="Sök OLS-ID, station, ort...">
+
 
   <div class="actions">
     <button id="showAllBtn">Visa alla</button>
@@ -95,27 +96,72 @@ button.secondary{background:#334155}
   </div>
 
   <details class="moa-section">
-    <summary><span class="dot" style="background:#7c3aed;border-radius:2px"></span><span>Mottagningsanläggningar (MOA)</span></summary>
+    <summary><span class="dot" id="moaDot" style="background:#0891b2;border-radius:2px"></span><span>Mottagningsanläggningar (MOA)</span></summary>
     <div class="moa-content">
+    <button id="editMoaColor" class="secondary">Ändra MOA-färg</button>
     <label class="filter-option"><input id="showMoa" type="checkbox" checked> Visa MOA på kartan</label>
     <label class="filter-option"><input id="showRoutes" type="checkbox" checked> Visa sträckor för urval</label>
     <input id="moaSearch" aria-label="Sök MOA" placeholder="Sök MOA-ID, namn eller ort" style="width:100%;padding:8px;margin:8px 0">
     <div id="moaList" style="max-height:220px;overflow:auto"></div>
     <button id="clearMoa" class="secondary">Rensa MOA-val</button>
     <p id="routeSummary" class="map-summary" aria-live="polite"></p>
-    <p class="map-summary">Lila fyrkant = MOA. Sträckor är raka förbindelselinjer, inte vägbeskrivningar. OLS- och MOA-val kombineras som filter.</p>
+    <p class="map-summary">Fyrkant = MOA. Sträckor är raka förbindelselinjer, inte vägbeskrivningar. OLS- och MOA-val kombineras som filter.</p>
   </div>
   </details>
   <div class="legend-title">Ansvariga / OLS</div>
+  <label for="search" class="map-summary">Sök bland alla OLS, oavsett ansvarig</label>
+  <input id="search" type="search" placeholder="Sök OLS-ID, station eller ort…">
+  <p id="olsSearchStatus" class="map-summary" aria-live="polite"></p>
   <div id="legend"></div>
 
   <div class="hint">Fäll ut en ansvarig och välj enstaka OLS eller <strong>Markera alla</strong>. Byt mellan karta och satellit via lagerknappen uppe till höger.</div>
+<details class="moa-section"><summary>Mina ändringar</summary><div class="moa-content">
+ <p class="map-summary">Ansvariga och färger sparas i den här webbläsaren. De ändrar inte GitHub eller andra besökares karta. Exportera en säkerhetskopia för att flytta ändringarna.</p>
+ <button id="exportPrefs">Exportera ändringar</button>
+ <label class="filter-option">Importera säkerhetskopia <input id="importPrefs" type="file" accept=".json,application/json"></label>
+ <p id="saveStatus" class="map-summary" role="status"></p>
+ </div></details>
 </aside>
 <div id="map"></div>
+<dialog id="editDialog"><form id="editForm">
+ <h2 id="editTitle"></h2>
+ <div id="ownerField"><label for="ownerInput">Ansvarig (välj eller skriv ett nytt namn)</label><input id="ownerInput" list="ownerNames" maxlength="100" required><datalist id="ownerNames"></datalist></div>
+ <label for="colorInput" id="colorLabel">Markörfärg</label><input id="colorInput" type="color">
+ <p class="map-summary">Sparas lokalt i den här webbläsaren.</p>
+ <div class="actions"><button type="submit">Spara</button><button id="cancelEdit" type="button" class="secondary">Avbryt</button></div>
+</form></dialog>
 </div>
 
 <script>
-const counts={};
+const PREF_KEY='ols-moa-preferences-v1';
+const baseOwners=new Map(OLS_DATA.map(x=>[String(x.ols_id),x.ansvar]));
+const baseColors={...OLS_COLORS};
+function validatePreferences(raw){
+ if(!raw||raw.version!==1||!raw.owners||typeof raw.owners!=='object'||Array.isArray(raw.owners)||!raw.colors||typeof raw.colors!=='object'||Array.isArray(raw.colors))throw Error('Ogiltig säkerhetskopia.');
+ const owners=Object.create(null),colors=Object.create(null);
+ for(const [id,name] of Object.entries(raw.owners)){
+  if(!baseOwners.has(id))throw Error(`Okänt OLS-ID: ${id}`);
+  if(typeof name!=='string'||!name.trim()||name.trim().length>100)throw Error('Ogiltigt namn på ansvarig.');
+  owners[id]=name.trim();
+ }
+ for(const [name,color] of Object.entries(raw.colors)){
+  if(!name.trim()||name.length>100||typeof color!=='string'||!/^#[0-9a-f]{6}$/i.test(color))throw Error('Ogiltig färg.');
+  colors[name]=color;
+ }
+ if(typeof raw.moaColor!=='string'||!/^#[0-9a-f]{6}$/i.test(raw.moaColor))throw Error('Ogiltig MOA-färg.');
+ return {version:1,owners,colors,moaColor:raw.moaColor};
+}
+let preferences={version:1,owners:Object.create(null),colors:Object.create(null),moaColor:'#0891b2'};
+let storageMessage='';
+try{const saved=localStorage.getItem(PREF_KEY);if(saved)preferences=validatePreferences(JSON.parse(saved));}catch(e){storageMessage='Sparade ändringar kunde inte läsas. Originaldata visas. Exportera nya ändringar som säkerhetskopia.';}
+function applyPreferences(){
+ OLS_DATA.forEach(x=>x.ansvar=preferences.owners[String(x.ols_id)]??baseOwners.get(String(x.ols_id)));
+ Object.keys(OLS_COLORS).forEach(k=>delete OLS_COLORS[k]);
+ for(const [name,color] of Object.entries({...baseColors,...preferences.colors}))Object.defineProperty(OLS_COLORS,name,{value:color,writable:true,enumerable:true,configurable:true});
+}
+applyPreferences();
+
+const counts=Object.create(null);
 OLS_DATA.forEach(x=>counts[x.ansvar]=(counts[x.ansvar]||0)+1);
 document.getElementById('totalCount').textContent=OLS_DATA.length;
 document.getElementById('ownerCount').textContent=Object.keys(counts).length;
@@ -127,18 +173,28 @@ function sortOls(a,b){
   return String(a.station||'').localeCompare(String(b.station||''),'sv');
 }
 
+function renderOwners(){
+ const opened=new Set([...legend.querySelectorAll('.owner-block.open')].map(b=>b.dataset.owner));
+ legend.replaceChildren();
+ Object.keys(counts).forEach(k=>delete counts[k]);
+ OLS_DATA.forEach(x=>counts[x.ansvar]=(counts[x.ansvar]||0)+1);
+ document.getElementById('ownerCount').textContent=Object.keys(counts).length;
 Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
   const block=document.createElement('div');
   block.className='owner-block';
   block.dataset.owner=name;
+  if(opened.has(name))block.classList.add('open');
 
   const head=document.createElement('div');
   head.className='owner-head';
   head.innerHTML=`<span class="chev">▶</span>
     <span class="dot" style="background:${OLS_COLORS[name]||'#334155'}"></span>
-    <span class="owner-name">${name}</span>
+    <span class="owner-name">${escapeText(name)}</span>
     <span class="owner-count">${count} st</span>`;
 
+  const colorButton=document.createElement('button');colorButton.className='secondary';colorButton.textContent='Färg';
+  colorButton.setAttribute('aria-label',`Ändra färg för ${name}`);
+  colorButton.onclick=e=>{e.stopPropagation();openColorEditor(name);};head.append(colorButton);
   const actions=document.createElement('div');
   actions.className='owner-actions';
   actions.innerHTML=`<button class="select-all">Markera alla</button>
@@ -163,6 +219,8 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
       updateListSelection();
       redraw(true);
     };
+    const edit=document.createElement('button');edit.textContent='⋯';edit.className='secondary';edit.setAttribute('aria-label',`Redigera OLS ${x.ols_id}`);
+    edit.onclick=e=>{e.stopPropagation();openOlsEditor(x);};item.append(edit);
     list.appendChild(item);
   });
 
@@ -190,6 +248,9 @@ Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name,count])=>{
   block.appendChild(list);
   legend.appendChild(block);
 });
+updateListSelection();filterList();
+}
+renderOwners();
 
 const map=L.map('map',{
   zoomSnap:0.25,
@@ -222,7 +283,7 @@ function iconFor(x){
 }
 function popup(x){
   return `<div class="popup-title">OLS ${x.ols_id} – ${x.station}</div>
-    <div class="popup-row"><span class="popup-label">Ansvarig</span><span class="popup-value">${x.ansvar}</span></div>
+    <div class="popup-row"><span class="popup-label">Ansvarig</span><span class="popup-value">${escapeText(x.ansvar)}</span></div>
     <div class="popup-row"><span class="popup-label">Transportör</span><span class="popup-value">${x.transportor||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Län</span><span class="popup-value">${x.lan||'–'}</span></div>
     <div class="popup-row"><span class="popup-label">Ort</span><span class="popup-value">${x.ort||'–'}</span></div>
@@ -253,12 +314,13 @@ function updateListSelection(){
 
 function filterList(){
   const q=searchTerm.trim().toLowerCase();
+  let matches=0;
   document.querySelectorAll('.owner-block').forEach(block=>{
     let visibleCount=0;
     block.querySelectorAll('.ols-item').forEach(item=>{
       const ok=!q || item.dataset.search.includes(q) || block.dataset.owner.toLowerCase().includes(q);
       item.style.display=ok?'flex':'none';
-      if(ok)visibleCount++;
+      if(ok){visibleCount++;matches++;}
     });
     block.style.display=visibleCount?'block':'none';
     if(q&&visibleCount){
@@ -266,6 +328,7 @@ function filterList(){
       block.querySelector('.chev').textContent='▼';
     }
   });
+  document.getElementById('olsSearchStatus').textContent=q?`${matches} OLS matchar sökningen` : '';
 }
 
 const selectedMoa=new Set();
@@ -296,12 +359,13 @@ function redraw(autoFit=true){
  const targetIds=new Set(active.map(r=>r.moa_id));
  if(document.getElementById('showRoutes').checked&&(selectedIds.size||selectedMoa.size))active.forEach(r=>{
   const x=olsById.get(r.ols_id),m=moaById.get(r.moa_id);
-  L.polyline([[x.lat,x.lon],[m.lat,m.lon]],{color:'#a78bfa',weight:3,opacity:.8}).bindPopup(`OLS ${escapeText(x.ols_id)} – ${escapeText(x.station)} → MOA ${escapeText(m.id)} – ${escapeText(m.name)}<br>Rak förbindelselinje`).addTo(markerLayer);
+  L.polyline([[x.lat,x.lon],[m.lat,m.lon]],{color:preferences.moaColor,weight:3,opacity:.8}).bindPopup(`OLS ${escapeText(x.ols_id)} – ${escapeText(x.station)} → MOA ${escapeText(m.id)} – ${escapeText(m.name)}<br>Rak förbindelselinje`).addTo(markerLayer);
   vis.push([m.lat,m.lon]);
  });
  shownOls.forEach(x=>{
   const links=OLS_MOA_ROUTES.filter(r=>r.ols_id===String(x.ols_id));
   const content=document.createElement('div');content.innerHTML=popup(x)+'<div class="popup-sep"></div><strong>Mottagningsanläggningar</strong>';
+  const edit=document.createElement('button');edit.textContent='Redigera OLS';edit.onclick=()=>openOlsEditor(x);content.append(edit);
   if(!links.length)content.append(document.createTextNode(' – Ingen MOA-koppling i underlaget.'));
   links.forEach(r=>{const m=moaById.get(r.moa_id),b=document.createElement('button');b.textContent=`${m.name} (${m.id})`;b.style.margin='5px';b.onclick=()=>focusMoa(m.id);content.append(b);});
   L.marker([x.lat,x.lon],{icon:iconFor(x)}).bindPopup(content).on('click',()=>{if(!selectedIds.size&&!selectedMoa.size){focusOls(String(x.ols_id));}}).addTo(markerLayer);
@@ -312,7 +376,7 @@ function redraw(autoFit=true){
   const content=document.createElement('div');const title=document.createElement('strong');title.textContent=`MOA ${m.id} – ${m.name}`;content.append(title);
   const p=document.createElement('p');p.textContent=`${m.address}, ${m.ort}`;content.append(p);
   OLS_MOA_ROUTES.filter(r=>r.moa_id===m.id).forEach(r=>{const x=olsById.get(r.ols_id),b=document.createElement('button');b.textContent=`OLS ${x.ols_id} – ${x.station}`;b.style.margin='4px';b.onclick=()=>focusOls(r.ols_id);content.append(b);});
-  const marker=L.marker([m.lat,m.lon],{icon:L.divIcon({className:'',html:'<div style="width:20px;height:20px;background:#7c3aed;border:3px solid white;box-shadow:0 1px 6px #333"></div>',iconSize:[20,20],iconAnchor:[10,10]})}).bindPopup(content).addTo(markerLayer);
+  const marker=L.marker([m.lat,m.lon],{icon:L.divIcon({className:'',html:`<div style="width:20px;height:20px;background:${preferences.moaColor};border:3px solid white;box-shadow:0 1px 6px #333"></div>`,iconSize:[20,20],iconAnchor:[10,10]})}).bindPopup(content).addTo(markerLayer);
   marker.on('click',()=>{if(!selectedMoa.has(m.id)){focusMoa(m.id);}});vis.push([m.lat,m.lon]);
  });
  document.getElementById('routeSummary').textContent=`${shownOls.length} OLS · ${targetIds.size} kopplade MOA · ${active.length} sträckor i urvalet. `+(!(selectedIds.size||selectedMoa.size)?'Välj OLS eller MOA för att rita sträckor.':'');
@@ -331,7 +395,7 @@ document.getElementById('showAllBtn').onclick=()=>{
   document.getElementById('search').value='';
   document.querySelectorAll('.owner-block').forEach(b=>b.style.display='block');
   document.querySelectorAll('.ols-item').forEach(i=>i.style.display='flex');
-  updateListSelection();
+  updateListSelection();filterList();
   redraw(true);
 };
 
@@ -345,14 +409,72 @@ document.getElementById('fitBtn').onclick=()=>redraw(true);
 
 document.getElementById('search').oninput=e=>{
   searchTerm=e.target.value||'';
+  selectedIds.clear();selectedMoa.clear();renderMoaList();updateListSelection();
   filterList();
   redraw(true);
 };
 
+
+let editing=null;
+const editDialog=document.getElementById('editDialog');
+function openOlsEditor(x){
+ editing={type:'ols',id:String(x.ols_id)};
+ document.getElementById('editTitle').textContent=`Redigera OLS ${x.ols_id} – ${x.station}`;
+ document.getElementById('ownerField').hidden=false;
+ const names=document.getElementById('ownerNames');names.replaceChildren();
+ [...new Set(OLS_DATA.map(x=>x.ansvar))].sort().forEach(name=>{const o=document.createElement('option');o.value=name;names.append(o);});
+ document.getElementById('ownerInput').value=x.ansvar;document.getElementById('ownerInput').required=true;
+ document.getElementById('colorLabel').textContent='Färg för den ansvarigas samtliga OLS';
+ document.getElementById('colorInput').value=OLS_COLORS[x.ansvar]||'#64748b';editDialog.showModal();
+}
+function openColorEditor(name){
+ editing={type:name===null?'moa':'owner',name};
+ document.getElementById('editTitle').textContent=name===null?'Ändra MOA-färg':`Färg för ${name}`;
+ document.getElementById('ownerField').hidden=true;document.getElementById('ownerInput').required=false;
+ document.getElementById('colorLabel').textContent=name===null?'Färg för alla MOA och sträckor':'Färg för den ansvarigas samtliga OLS';
+ document.getElementById('colorInput').value=name===null?preferences.moaColor:(OLS_COLORS[name]||'#64748b');editDialog.showModal();
+}
+document.getElementById('ownerInput').oninput=e=>{const color=OLS_COLORS[e.target.value.trim()];if(color)document.getElementById('colorInput').value=color;};
+function persistPreferences(){
+ try{localStorage.setItem(PREF_KEY,JSON.stringify(preferences));storageMessage='Ändringarna är sparade i den här webbläsaren.';}
+ catch(e){storageMessage='Ändringarna visas men kunde inte sparas i webbläsaren. Exportera en säkerhetskopia innan du stänger sidan.';}
+ document.getElementById('saveStatus').textContent=storageMessage;
+}
+function refreshPreferences(){
+ applyPreferences();renderOwners();document.getElementById('moaDot').style.background=preferences.moaColor;redraw(false);
+}
+document.getElementById('editForm').onsubmit=e=>{
+ e.preventDefault();const color=document.getElementById('colorInput').value;
+ if(editing.type==='ols'){
+  const name=document.getElementById('ownerInput').value.trim();
+  if(!name){document.getElementById('ownerInput').setCustomValidity('Ange en ansvarig.');document.getElementById('ownerInput').reportValidity();return;}
+  preferences.owners[editing.id]=name;preferences.colors[name]=color;
+ }else if(editing.type==='moa')preferences.moaColor=color;
+ else preferences.colors[editing.name]=color;
+ persistPreferences();refreshPreferences();editDialog.close();
+};
+document.getElementById('ownerInput').addEventListener('input',e=>e.target.setCustomValidity(''));
+document.getElementById('cancelEdit').onclick=()=>editDialog.close();
+document.getElementById('editMoaColor').onclick=()=>openColorEditor(null);
+document.getElementById('exportPrefs').onclick=()=>{
+ const url=URL.createObjectURL(new Blob([JSON.stringify(preferences,null,2)],{type:'application/json'}));
+ const a=document.createElement('a');a.href=url;a.download='OLS-karta-mina-andringar.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+document.getElementById('importPrefs').onchange=async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{
+  if(file.size>1000000)throw Error('Filen är för stor.');
+  const next=validatePreferences(JSON.parse(await file.text()));
+  if(!confirm('Ersätt dina lokalt sparade ansvariga och färger med säkerhetskopian?'))return;
+  preferences=next;persistPreferences();refreshPreferences();
+ }catch(err){document.getElementById('saveStatus').textContent='Importen misslyckades: '+err.message;}
+ finally{e.target.value='';}
+};
+document.getElementById('moaDot').style.background=preferences.moaColor;
+document.getElementById('saveStatus').textContent=storageMessage||'Inga nya ändringar. Ändringar sparas lokalt när du väljer Spara.';
 
 updateListSelection();
 redraw(true);
 </script>
 </body>
 </html>
-
