@@ -1,8 +1,10 @@
+change 29/10-26
+Sökfältet vid Ansvariga/OLS söker bland alla OLS och öppnar automatiskt ansvariggruppen. En ny sökning rensar tidigare OLS/MOA-val för att visa alla träffar.
+Klicka på ⋯ vid en OLS eller Redigera OLS i kartans popup för att ändra ansvarig. Skriv ett nytt namn för att lägga till en ansvarig. Färgvalet gäller samtliga OLS för den ansvariga. Knappen Färg vid ansvarig ändrar gruppens färg; Ändra MOA-färg ändrar alla MOA och förbindelselinjer.
 
+Ändringar sparas i localStorage för samma webbläsare och webbplatsadress. De synkas inte med GitHub, kollegor, andra enheter eller andra webbläsare. Rensning av webbplatsdata tar bort ändringarna. Exportera/importera under Mina ändringar för säkerhetskopiering och överföring. Import ersätter lokala inställningar efter bekräftelse. Originaldata ändras inte. För gemensam redigering krävs en separat lagringstjänst med inloggning.
 
-
-
-
+MOA är turkos som standard. MOA/OLS-filter, sträckor och karta/satellit är kvar. Glastransportfunktionen är borttagen. Internet behövs för kartbakgrunder och Leaflet.
 
 
 
