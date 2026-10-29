@@ -1606,7 +1606,7 @@
       "station": "Björnhyttans Avfallsanläggning",
       "ansvar": "Niklas Gyllenstierna",
       "transportor": "m4 gruppen AB",
-      "note": "",
+      "note": "test github",
       "lat": 60.135714,
       "lon": 15.02655,
       "ort": "Ludvika",
@@ -2588,11 +2588,6 @@
       "carrier": ""
     },
     {
-      "ols_id": "4055",
-      "moa_id": "6021",
-      "carrier": ""
-    },
-    {
       "ols_id": "4062",
       "moa_id": "6008",
       "carrier": ""
@@ -3135,6 +3130,11 @@
     {
       "ols_id": "4244",
       "moa_id": "6030",
+      "carrier": ""
+    },
+    {
+      "ols_id": "4055",
+      "moa_id": "6021",
       "carrier": ""
     }
   ]
