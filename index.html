@@ -19,7 +19,7 @@ body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#1f2937}
 .stat{background:#111827;border:1px solid #1f2937;border-radius:10px;padding:12px}
 .value{font-size:28px;font-weight:700;color:#f8fafc;line-height:1}
 .label{font-size:12px;color:#94a3b8;margin-top:6px}
-#search{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;margin:8px 0 10px}
+#search,#moaSearch{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #334155;background:#111827;color:#fff;margin:8px 0 10px}
 .actions{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 button{background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer;font-size:12px}
 button.secondary{background:#334155}
@@ -104,7 +104,7 @@ dialog{width:min(680px,94vw);max-height:90vh;overflow-y:auto}dialog input:not([t
     </div>
     <label class="filter-option"><input id="showOls" type="checkbox" checked> Visa OLS på kartan</label>
     <label class="filter-option"><input id="showRoutesMoa" type="checkbox" checked> Visa sträckor för urval</label>
-    <input id="moaSearch" aria-label="Sök MOA" placeholder="Sök MOA-ID, namn, ort eller ansvarig" style="width:100%;padding:8px;margin:8px 0">
+    <input id="moaSearch" aria-label="Sök MOA" placeholder="Sök MOA-ID, namn, ort eller ansvarig">
     <div id="moaList"></div>
     <button id="clearMoa" class="secondary">Rensa MOA-val</button>
     <p id="routeSummary" class="map-summary" aria-live="polite"></p>
