@@ -2211,25 +2211,13 @@
       "kommun": "Kiruna",
       "lan": "Norrbottens län",
       "postnummer": "981 37"
-    },
-    {
-      "ols_id": "4253",
-      "station": "Stenkullen",
-      "ansvar": "Okänd",
-      "transportor": "",
-      "note": "",
-      "lat": 57.79476,
-      "lon": 12.31688,
-      "ort": "Stenkullen",
-      "kommun": "Lerum",
-      "lan": "Västra Götalands län",
-      "postnummer": "443 61"
     }
   ],
   "moa": [
     {
       "id": "6042",
       "name": "Affärsverken",
+      "ansvar": "Victor Törngren",
       "address": "Tippvägen 10",
       "note": "",
       "lat": 56.240929,
@@ -2240,6 +2228,7 @@
     {
       "id": "6021",
       "name": "Stena Recycling AB, Borlänge",
+      "ansvar": "Victor Törngren",
       "address": "Hejargatan 5, S Industriomr.",
       "note": "",
       "lat": 60.47472,
@@ -2250,6 +2239,7 @@
     {
       "id": "6008",
       "name": "Prezero Recycling AB, Mora",
+      "ansvar": "Victor Törngren",
       "address": "Vattugatan 3",
       "note": "",
       "lat": 60.991011,
@@ -2260,6 +2250,7 @@
     {
       "id": "6023",
       "name": "Stena Recycling AB, Bollnäs",
+      "ansvar": "Peter Schultz",
       "address": "Tegelbruksvägen 7",
       "note": "",
       "lat": 61.37833,
@@ -2270,6 +2261,7 @@
     {
       "id": "6026",
       "name": "Stena Recycling AB, Hudiksvall",
+      "ansvar": "Peter Schultz",
       "address": "Köpmanbergsvägen 11",
       "note": "",
       "lat": 61.72139,
@@ -2280,6 +2272,7 @@
     {
       "id": "6009",
       "name": "Petterssons Miljöåkeri",
+      "ansvar": "Peter Schultz",
       "address": "Tömvägen 4",
       "note": "",
       "lat": 56.641808,
@@ -2290,6 +2283,7 @@
     {
       "id": "6004",
       "name": "Lundstams",
+      "ansvar": "Peter Schultz",
       "address": "Storlienvägen 50",
       "note": "",
       "lat": 63.207185,
@@ -2300,6 +2294,7 @@
     {
       "id": "6017",
       "name": "Remondis AB, Jönköping",
+      "ansvar": "Peter Schultz",
       "address": "Lagervägen 3",
       "note": "",
       "lat": 57.651231,
@@ -2310,6 +2305,7 @@
     {
       "id": "6014",
       "name": "Ragn-Sells Recycling AB, Vetlanda",
+      "ansvar": "Victor Törngren",
       "address": "Hultaby Nyatorp 1",
       "note": "",
       "lat": 57.410042,
@@ -2320,6 +2316,7 @@
     {
       "id": "6027",
       "name": "Stena Recycling AB, Kalmar",
+      "ansvar": "Victor Törngren",
       "address": "Husängsvägen 7",
       "note": "",
       "lat": 56.672317,
@@ -2330,6 +2327,7 @@
     {
       "id": "6030",
       "name": "Stena Recycling AB, Linköping",
+      "ansvar": "Victor Törngren",
       "address": "Bangårdsgatan 3",
       "note": "",
       "lat": 58.421518,
@@ -2340,6 +2338,7 @@
     {
       "id": "6039",
       "name": "Stena Recycling AB, Växjö",
+      "ansvar": "Victor Törngren",
       "address": "Renvägen 11",
       "note": "",
       "lat": 56.908362,
@@ -2350,6 +2349,7 @@
     {
       "id": "6043",
       "name": "Lumire Sunderbyn",
+      "ansvar": "Peter Schultz",
       "address": "Gamla Bodenvägen 330",
       "note": "",
       "lat": 65.668551,
@@ -2360,6 +2360,7 @@
     {
       "id": "6032",
       "name": "Stena Recycling AB, Piteå",
+      "ansvar": "Peter Schultz",
       "address": "Hammarvägen 33",
       "note": "",
       "lat": 65.335772,
@@ -2370,6 +2371,7 @@
     {
       "id": "6029",
       "name": "Stena Recycling AB, Kristianstad",
+      "ansvar": "Victor Törngren",
       "address": "Annedalsvägen 20",
       "note": "",
       "lat": 55.993512,
@@ -2380,6 +2382,7 @@
     {
       "id": "6031",
       "name": "Stena Recycling AB, Malmö",
+      "ansvar": "Victor Törngren",
       "address": "Hemsögatan 2",
       "note": "",
       "lat": 55.62774,
@@ -2390,6 +2393,7 @@
     {
       "id": "6010",
       "name": "Prezero Recyling AB, Åstorp",
+      "ansvar": "Victor Törngren",
       "address": "Ji-Te Gatan 17",
       "note": "",
       "lat": 56.12278,
@@ -2400,6 +2404,7 @@
     {
       "id": "6034",
       "name": "Stena Recycling AB, Rosersberg",
+      "ansvar": "Victor Törngren",
       "address": "Metallvägen 60",
       "note": "",
       "lat": 59.562364,
@@ -2410,6 +2415,7 @@
     {
       "id": "6006",
       "name": "PreZero Recycling AB, Högdalen",
+      "ansvar": "Peter Schultz",
       "address": "Kvicksundsvägen 14-16",
       "note": "",
       "lat": 59.259419,
@@ -2420,6 +2426,7 @@
     {
       "id": "6018",
       "name": "Remondis AB, Spånga",
+      "ansvar": "Agneta Fladerer",
       "address": "Finspångsgatan 36",
       "note": "",
       "lat": 59.38778,
@@ -2430,6 +2437,7 @@
     {
       "id": "6020",
       "name": "RPC",
+      "ansvar": "Victor Törngren",
       "address": "Grafikgatan 2-6",
       "note": "",
       "lat": 59.855084,
@@ -2440,6 +2448,7 @@
     {
       "id": "6011",
       "name": "PreZero Recyling AB, Norrköping",
+      "ansvar": "Victor Törngren",
       "address": "Röda Stugans Gata 9",
       "note": "",
       "lat": 58.594821,
@@ -2450,6 +2459,7 @@
     {
       "id": "6001",
       "name": "ESEM",
+      "ansvar": "Victor Törngren",
       "address": "Återvinningsgatan 2",
       "note": "",
       "lat": 59.344895,
@@ -2460,6 +2470,7 @@
     {
       "id": "6041",
       "name": "VafabMiljö",
+      "ansvar": "Victor Törngren",
       "address": "Returvägen 20",
       "note": "",
       "lat": 59.662038,
@@ -2470,6 +2481,7 @@
     {
       "id": "6028",
       "name": "Stena Recycling AB, Karlstad",
+      "ansvar": "Peter Schultz",
       "address": "Östanvindsgatan 24",
       "note": "",
       "lat": 59.38583,
@@ -2480,6 +2492,7 @@
     {
       "id": "6038",
       "name": "Stena Recycling AB, Umeå",
+      "ansvar": "Peter Schultz",
       "address": "Kontaktvägen 16",
       "note": "",
       "lat": 63.846985,
@@ -2490,6 +2503,7 @@
     {
       "id": "6016",
       "name": "Remondis AB, Husum",
+      "ansvar": "Peter Schultz",
       "address": "Dombäck 239",
       "note": "",
       "lat": 63.3515,
@@ -2500,6 +2514,7 @@
     {
       "id": "6002",
       "name": "HEMAB",
+      "ansvar": "Peter Schultz",
       "address": "Jaktstigen 1",
       "note": "",
       "lat": 62.630321,
@@ -2510,6 +2525,7 @@
     {
       "id": "6007",
       "name": "Remondis AB, Borås",
+      "ansvar": "Peter Schultz",
       "address": "Ödegärdsgatan 14",
       "note": "",
       "lat": 57.69194,
@@ -2520,6 +2536,7 @@
     {
       "id": "6015",
       "name": "Remondis AB, Göteborg",
+      "ansvar": "Peter Schultz",
       "address": "Importgatan 47",
       "note": "",
       "lat": 57.75778,
@@ -2530,6 +2547,7 @@
     {
       "id": "6035",
       "name": "Stena Recycling AB, Skara",
+      "ansvar": "Peter Schultz",
       "address": "Axvallagatan 6",
       "note": "",
       "lat": 58.38472,
@@ -2540,6 +2558,7 @@
     {
       "id": "6019",
       "name": "Remondis AB, Trollhättan",
+      "ansvar": "Peter Schultz",
       "address": "Flygfältsvägen 19",
       "note": "",
       "lat": 58.306246,
@@ -2550,6 +2569,7 @@
     {
       "id": "6040",
       "name": "Stena Recycling AB, Örebro",
+      "ansvar": "Victor Törngren",
       "address": "Returgatan 3",
       "note": "",
       "lat": 59.209758,
@@ -3052,11 +3072,6 @@
     {
       "ols_id": "4252",
       "moa_id": "6035",
-      "carrier": ""
-    },
-    {
-      "ols_id": "4253",
-      "moa_id": "6015",
       "carrier": ""
     },
     {
