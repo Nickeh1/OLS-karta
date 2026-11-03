@@ -112,6 +112,7 @@ dialog{width:min(680px,94vw);max-height:90vh;overflow-y:auto}dialog input:not([t
   </div>
   </details>
   <details class="moa-section" id="olsSection"><summary>Omlastningsstationer (OLS)</summary><div class="moa-content">
+  <button id="addOlsBtn" type="button">+ Lägg till OLS</button>
  <div class="stat-grid">
     <div class="stat"><div class="value" id="totalCount"></div><div class="label">OLS totalt</div></div>
     <div class="stat"><div class="value" id="ownerCount"></div><div class="label">Ansvariga</div></div>
@@ -137,7 +138,7 @@ dialog{width:min(680px,94vw);max-height:90vh;overflow-y:auto}dialog input:not([t
  <label class="filter-option">Importera säkerhetskopia <input id="importPrefs" type="file" accept=".json,application/json"></label>
  <p id="saveStatus" class="map-summary" role="status"></p>
  </div></details>
-<details class="moa-section" id="developerBox"><summary>Utvecklarverktyg / GitHub</summary><p class="map-summary">Gränssnittsversion 2026-10-30.2</p><div class="moa-content">
+<details class="moa-section" id="developerBox"><summary>Utvecklarverktyg / GitHub</summary><p class="map-summary">Gränssnittsversion 2026-11-03.1</p><div class="moa-content">
  <strong>Gemensam karta via GitHub</strong>
  <p id="publishState" class="map-summary" role="status">Hämtar gemensam version…</p>
  <div class="actions"><button id="publishBtn" disabled>Publicera till GitHub</button><button id="refreshShared" class="secondary">Hämta gemensam version</button></div>
@@ -160,7 +161,7 @@ dialog{width:min(680px,94vw);max-height:90vh;overflow-y:auto}dialog input:not([t
  <h2 id="editTitle"></h2><div id="editFields"></div>
  <p id="editError" role="alert" style="color:#fca5a5"></p>
  <p class="map-summary">Spara skapar ett lokalt utkast. Publicera sedan till GitHub för att dela dataändringarna. Färger förblir personliga.</p>
- <div class="actions"><button type="submit">Spara ändringar</button><button id="cancelEdit" type="button" class="secondary">Avbryt</button><button id="deleteEntity" type="button" style="background:#b91c1c">Radera anläggning</button></div>
+ <div class="actions"><button id="saveEntity" type="submit">Spara ändringar</button><button id="cancelEdit" type="button" class="secondary">Avbryt</button><button id="deleteEntity" type="button" style="background:#b91c1c">Radera anläggning</button></div>
  </form></dialog>
 </div>
 
@@ -212,6 +213,20 @@ function editedEntity(source,type,oldId,values,connections){
  next.routes=next.routes.filter(r=>r[ownKey]!==oldId);
  for(const c of connections){const r=previous.find(r=>r[otherKey]===c.id);next.routes.push({...r,[ownKey]:newId,[otherKey]:c.id,carrier:c.carrier});}
  return validateState(next);
+}
+function createdOls(source,values,connections){
+ const next=copy(source);
+ if(next.ols.some(x=>x.ols_id===values.ols_id))throw Error('OLS-ID används redan. Välj ett unikt ID.');
+ next.ols.push(copy(values));
+ for(const c of connections)next.routes.push({ols_id:values.ols_id,moa_id:c.id,carrier:c.carrier});
+ return validateState(next);
+}
+function readCoordinate(value,label,min,max){
+ const text=String(value).trim();
+ if(!text||!/^[-+]?\d+(?:[.,]\d+)?$/.test(text))throw Error('Ange '+label+' som ett tal, till exempel '+(label==='latitud'?'59.123456':'18.123456')+'.');
+ const number=Number(text.replace(',','.'));
+ if(!Number.isFinite(number)||number<min||number>max)throw Error(label+' måste vara mellan '+min+' och '+max+'.');
+ return number;
 }
 function removedEntity(source,type,id){
  const next=copy(source);if(type==='ols'){next.ols=next.ols.filter(x=>x.ols_id!==id);next.routes=next.routes.filter(r=>r.ols_id!==id);}
@@ -427,12 +442,23 @@ function field(labelText,id,type='text',value='',max=200){
  const label=el('label',labelText);label.htmlFor=id;const input=el(type==='textarea'?'textarea':'input');input.id=id;if(type!=='textarea')input.type=type;input.value=value;input.maxLength=max;return {label,input};
 }
 function appendField(parent,f){parent.append(f.label,f.input);return f.input;}
-function openEntityEditor(type,id){
+function openEntityEditor(type,id,newEntity=null){
  if(!sharedReady||syncBusy){$('syncStatus').textContent='Hämta gemensam version och vänta tills den är klar innan du redigerar.';return;}
- editing={type,id};const x=type==='ols'?ols(id):moa(id);if(!x)return;
- const body=$('editFields');body.replaceChildren();$('editTitle').textContent=`Redigera ${type.toUpperCase()} ${id}`;$('editError').textContent='';$('deleteEntity').hidden=false;
+ editing={type,id,creating:!!newEntity};const x=newEntity||(type==='ols'?ols(id):moa(id));if(!x)return;
+ const body=$('editFields');body.replaceChildren();$('editTitle').textContent=newEntity?'Lägg till ny OLS':`Redigera ${type.toUpperCase()} ${id}`;$('editError').textContent='';$('deleteEntity').hidden=!!newEntity;$('saveEntity').textContent=newEntity?'Lägg till OLS':'Spara ändringar';
  appendField(body,field('Namn','entityName','text',type==='ols'?x.station:x.name)).required=true;
  const idInput=appendField(body,field('ID (unikt inom OLS respektive MOA)','entityId','text',id,40));idInput.required=true;idInput.pattern='[A-Za-z0-9_-]+';
+ if(newEntity){
+  appendField(body,field('Adress (valfritt)','entityAddress','text','',300));
+  appendField(body,field('Postnummer (valfritt)','entityPostcode','text','',30));
+  appendField(body,field('Ort','entityTown','text','',200)).required=true;
+  appendField(body,field('Kommun (valfritt)','entityMunicipality','text','',200));
+  appendField(body,field('Län (valfritt)','entityCounty','text','',200));
+  body.append(el('p','Kopiera koordinaterna från exempelvis kartans platsinformation. Latitud är första talet (ofta 55–69 i Sverige), longitud är det andra. Punkt eller komma som decimaltecken går bra.','map-summary'));
+  const lat=appendField(body,field('Latitud','entityLat','text','',30));lat.required=true;lat.inputMode='decimal';lat.placeholder='59.123456';
+  const lon=appendField(body,field('Longitud','entityLon','text','',30));lon.required=true;lon.inputMode='decimal';lon.placeholder='18.123456';
+ }
+
  if(type==='ols'){
   const owner=appendField(body,field('Ansvarig (välj eller skriv ett nytt namn)','entityOwner','text',x.ansvar,100));owner.required=true;owner.setAttribute('list','ownerNames');
   const names=el('datalist');names.id='ownerNames';[...new Set(state.ols.map(x=>x.ansvar))].sort().forEach(name=>{const o=el('option');o.value=name;names.append(o);});body.append(names);
@@ -462,7 +488,7 @@ function openEntityEditor(type,id){
  });search.oninput=()=>list.querySelectorAll('.relation-row').forEach(row=>row.hidden=!row.dataset.search.includes(search.value.trim().toLowerCase()));body.append(list);
  $('editDialog').showModal();
 }
-function openColorEditor(name,scope='ols'){editing={type:'color',name,scope};$('editTitle').textContent=name===null?'Ändra MOA:s standardfärg':'Färg för '+name;const body=$('editFields');body.replaceChildren();appendField(body,field('Markörfärg','entityColor','color',name===null?state.moaColor:(scope==='moa'?moaOwnerColor(name):ownerColor(name))));$('deleteEntity').hidden=true;$('editError').textContent='';$('editDialog').showModal();}
+function openColorEditor(name,scope='ols'){$('saveEntity').textContent='Spara ändringar';editing={type:'color',name,scope};$('editTitle').textContent=name===null?'Ändra MOA:s standardfärg':'Färg för '+name;const body=$('editFields');body.replaceChildren();appendField(body,field('Markörfärg','entityColor','color',name===null?state.moaColor:(scope==='moa'?moaOwnerColor(name):ownerColor(name))));$('deleteEntity').hidden=true;$('editError').textContent='';$('editDialog').showModal();}
 $('editForm').onsubmit=e=>{
  e.preventDefault();$('editError').textContent='';try{
   if(editing.type==='color'){const next=copy(state);if(editing.name===null)next.moaColor=$('entityColor').value;else Object.defineProperty(editing.scope==='moa'?next.moaColors:next.colors,editing.name,{value:$('entityColor').value,enumerable:true,configurable:true,writable:true});commit(next);}
@@ -470,16 +496,24 @@ $('editForm').onsubmit=e=>{
    const type=editing.type,isOls=type==='ols',newId=$('entityId').value.trim(),name=$('entityName').value.trim();
    const values=isOls?{ols_id:newId,station:name,ansvar:$('entityOwner').value.trim(),transportor:$('entityCarrier').value.trim(),note:$('entityNote').value}:{id:newId,name,ansvar:$('entityOwner').value.trim(),note:$('entityNote').value};
    const connections=[...$('relationList').querySelectorAll('.relation-row')].filter(row=>row.querySelector('.relation-check').checked).map(row=>({id:row.dataset.id,carrier:row.querySelector('.relation-carrier').value.trim()}));
-   const next=editedEntity(state,type,editing.id,values,connections);
+   if(editing.creating)Object.assign(values,{address:$('entityAddress').value.trim(),postnummer:$('entityPostcode').value.trim(),ort:$('entityTown').value.trim(),kommun:$('entityMunicipality').value.trim(),lan:$('entityCounty').value.trim(),lat:readCoordinate($('entityLat').value,'latitud',-90,90),lon:readCoordinate($('entityLon').value,'longitud',-180,180)});
+   if(editing.creating&&!values.ort)throw Error('Ange ort för den nya OLS-anläggningen.');
+   const next=editing.creating?createdOls(state,values,connections):editedEntity(state,type,editing.id,values,connections);
    if(isOls)Object.defineProperty(next.colors,values.ansvar,{value:$('entityColor').value,enumerable:true,configurable:true,writable:true});else Object.defineProperty(next.moaColors,values.ansvar,{value:$('entityColor').value,enumerable:true,configurable:true,writable:true});
    const set=isOls?selectedIds:selectedMoa;if(set.has(editing.id)){set.delete(editing.id);set.add(newId);}commit(next);
+   if(editing.creating){$('showOls').checked=true;openOwners.add(values.ansvar);focus('ols',newId);}
   }$('editDialog').close();
  }catch(err){$('editError').textContent=err.message;}
 };
 $('deleteEntity').onclick=()=>{
+ if(editing?.creating||editing?.type==='color')return;
  const {type,id}=editing,links=state.routes.filter(r=>type==='ols'?r.ols_id===id:r.moa_id===id).length;
  if(confirm(`Radera ${type.toUpperCase()} ${id} och dess ${links} sträckor? Motpartens anläggningar finns kvar. Raderingen sparas som utkast tills du publicerar till GitHub.`)){commit(removedEntity(state,type,id));$('editDialog').close();}
 };
+function openNewOls(){
+ openEntityEditor('ols','',{ols_id:'',station:'',ansvar:'Okänd',transportor:'',note:''});
+}
+$('addOlsBtn').onclick=openNewOls;
 $('cancelEdit').onclick=()=>$('editDialog').close();
 $('exportPrefs').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=el('a');a.href=url;a.download='OLS-MOA-karta-sakerhetskopia.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 $('importPrefs').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>5000000)throw Error('Filen är för stor.');const raw=JSON.parse(await file.text()),parsed=raw.version===1?migrateLegacy(raw):validateState(raw),next=withPersonalColors(sharedDocument(parsed));if(confirm('Läs in säkerhetskopians anläggningar och sträckor som ett nytt utkast? Dina personliga färger behålls. Inget delas förrän du publicerar.')){selectedIds.clear();selectedMoa.clear();clearSearch();commit(next);}}catch(err){$('saveStatus').textContent='Importen misslyckades: '+err.message;}finally{e.target.value='';}};
